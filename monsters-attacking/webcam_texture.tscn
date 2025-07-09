@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3khmxkugskk1"]
+
+[ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://webcam.tres" id="1_mr7vm"]
+[ext_resource type="PackedScene" uid="uid://v2iy6svfm1gl" path="res://webcam_control.tscn" id="2_4u63h"]
+
+[node name="WebcamTexture" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mr7vm")
+
+[node name="WebcamControl" parent="." instance=ExtResource("2_4u63h")]
+camera_texture = ExtResource("1_mr7vm")

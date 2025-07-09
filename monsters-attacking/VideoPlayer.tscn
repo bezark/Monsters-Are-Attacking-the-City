@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dublt7xpc2f07"]
+
+[ext_resource type="VideoStream" uid="uid://be1p843r540he" path="res://output.ogv" id="1_uesct"]
+
+[node name="VideoPlayer" type="VideoStreamPlayer"]
+stream = ExtResource("1_uesct")
+autoplay = true
