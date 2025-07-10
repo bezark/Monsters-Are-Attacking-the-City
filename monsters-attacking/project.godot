@@ -13,6 +13,7 @@ config_version=5
 config/name="MonstersAttacking"
 run/main_scene="uid://clviwfuarkpwl"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.238534, 0.00113579, 0.271276, 1)
 config/icon="res://icon.svg"
 
 [audio]
@@ -21,7 +22,11 @@ driver/enable_input=true
 
 [display]
 
+window/size/viewport_width=720
+window/size/viewport_height=480
+window/size/mode=4
 window/size/always_on_top=true
+window/stretch/mode="viewport"
 
 [editor]
 
@@ -31,3 +36,4 @@ movie_writer/movie_file="/home/johnb/3Play/Monsters-Are-Attacking-the-City/monst
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.464353, 0.11678, 0.484874, 1)
