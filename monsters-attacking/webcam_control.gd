@@ -4,14 +4,15 @@ extends Node
 var camera_feed: CameraFeed
 
 # Hardcoded device name and format
-@export var DEVICE_NAME = "VirtualCam #0"  # Replace with your camera's name
-@export var FORMAT_INDEX = 114  # Use the first available format
+@export var DEVICE_NAME = "Camera "  # Replace with your camera's name
+@export var FORMAT_INDEX = 0  # Use the first available format
 @export var camera_texture: CameraTexture
 
 func _ready():
 	# Find the camera feed with the specified name
 
 	for feed in CameraServer.feeds():
+		print(feed.get_name())
 		if feed.get_name() == DEVICE_NAME:
 			camera_feed = feed
 			break

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clviwfuarkpwl"]
+[gd_scene load_steps=4 format=3 uid="uid://clviwfuarkpwl"]
 
 [ext_resource type="Script" uid="uid://b52tqxseiqsqp" path="res://simple_recorder.gd" id="1_36v62"]
-[ext_resource type="PackedScene" uid="uid://d3khmxkugskk1" path="res://webcam_texture.tscn" id="1_xcomi"]
+[ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://webcam.tres" id="2_oy6hb"]
+[ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://webcam_control.gd" id="2_x6u7j"]
 
 [node name="SimpleRecorder" type="Control"]
 layout_mode = 3
@@ -18,13 +19,25 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Record..."
 
-[node name="WebcamTexture" parent="." instance=ExtResource("1_xcomi")]
+[node name="WebcamTexture" type="TextureRect" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 166.0
 offset_top = 75.0
 offset_right = -186.0
 offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oy6hb")
 expand_mode = 1
+
+[node name="WebcamControl" type="Node" parent="WebcamTexture"]
+script = ExtResource("2_x6u7j")
+DEVICE_NAME = "Camera         "
+FORMAT_INDEX = 1
+camera_texture = ExtResource("2_oy6hb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
