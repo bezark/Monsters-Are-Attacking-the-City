@@ -13,7 +13,7 @@ func start_recording():
 	
 	var args = [
 		"--audio=Andrea_PureAudio,0",
-		"--file=output.mp4"
+		"--file=output1.mp4"
 	]
 	# No more sudo needed!
 	
@@ -29,7 +29,7 @@ func stop_recording():
 		
 		ffmpeg_pid = -1
 		OS.execute("ffmpeg" ,[
-			"-i", "output.mp4", "-vf","scale=720;480", "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", "output.ogv"
+			"-i", "output1.mp4", "-vf","scale=720;480", "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", "output1.ogv"
 		]
 )
 		print("Recording stopped")
@@ -55,7 +55,7 @@ func _on_record_toggled(toggled_on: bool) -> void:
 		
 func play_video():
 	$CenterContainer/VBoxContainer/WebcamTexture.hide()
-	video.stream.file="output.ogv"
+	video.stream.file="output1.ogv"
 	video.show()
 	video.play()
 
