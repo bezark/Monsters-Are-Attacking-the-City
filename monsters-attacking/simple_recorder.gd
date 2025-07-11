@@ -10,10 +10,7 @@ var recording_path: String = "res://recording.ogv"
 
 func start_recording():
 	var output_path = ProjectSettings.globalize_path(recording_path)
-# Before recording, disable compositor
-	OS.execute("xfwm4", ["--compositor=off"])
-
-# Then use original x11grab
+	
 	var args = [
 		"-device", "/dev/dri/card1",
 		"-f", "kmsgrab",
@@ -27,16 +24,16 @@ func start_recording():
 		"-q:a", "4",
 		"-y",
 		output_path
-		]
+	]
+	
+	# No more sudo needed!
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 func stop_recording():
 	if ffmpeg_pid != -1:
-		# Send SIGINT (Ctrl+C) for clean shutdown
 		OS.execute("kill", ["-INT", str(ffmpeg_pid)])
 		
-		# Wait a moment for ffmpeg to finish writing
 		await get_tree().create_timer(1.0).timeout
 		
 		ffmpeg_pid = -1
