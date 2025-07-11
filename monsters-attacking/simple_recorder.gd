@@ -17,8 +17,7 @@ func start_recording():
 		"-i", "-",
 		"-f", "alsa",
 		"-i", "plughw:3,0",    # Use plughw instead of hw
-		"-vf", "hwdownload,format=bgr0,format=yuv420p",  # Chain conversions		"-c:v", "libtheora",
-		"-q:v", "7",
+		"-vf", "hwmap=derive_device=vaapi,scale_vaapi=format=nv12,hwdownload,format=nv12,format=yuv420p",		"-q:v", "7",
 		"-c:a", "libvorbis",
 		"-q:a", "4",
 		"-y",
