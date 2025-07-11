@@ -17,7 +17,7 @@ func start_recording():
 	var args = [
 		"-f", "x11grab",
 		"-r", "30", 
-		"-s", "1920x1080",
+		"-s", "720x480",
 		"-i", ":0.0",
 		"-draw_mouse", "1",  # Ensure mouse is captured
 		"-f", "alsa",
