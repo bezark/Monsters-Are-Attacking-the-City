@@ -15,7 +15,7 @@ func start_recording():
 		"-r", "30",
 		"-i", ":0.0",
 		"-f", "alsa",
-		"-i", "hw:1,0",  # Adjust based on your audio device
+		#"-i", "hw:1,0",  # Adjust based on your audio device
 		"-c:v", "libtheora",
 		"-q:v", "7",
 		"-c:a", "libvorbis", 
