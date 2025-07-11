@@ -15,19 +15,19 @@ func start_recording():
 
 # Then use original x11grab
 	var args = [
-		"-f", "x11grab",
-		"-r", "30", 
-		"-s", "720x480",
-		"-i", ":0.0",
+		"-device", "/dev/dri/card1",
+		"-f", "kmsgrab",
+		"-i", "-",
 		"-f", "alsa",
 		"-i", "hw:3,0",
+		"-vf", "hwdownload,format=bgr0",
 		"-c:v", "libtheora",
 		"-q:v", "7",
 		"-c:a", "libvorbis",
-		"-q:a", "4", 
+		"-q:a", "4",
 		"-y",
 		output_path
-	]
+		]
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
