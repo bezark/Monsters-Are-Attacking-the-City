@@ -16,14 +16,12 @@ func start_recording():
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
-		"-channels", "1",
 		"-i", "hw:3,0",
-		"-vf", "hwdownload",  # No format specified - let ffmpeg choose
+		"-vf", "hwdownload,format=bgr0",  # No format specified - let ffmpeg choose
 		"-c:v", "libtheora",
 		"-q:v", "7",
 		"-c:a", "libvorbis",
 		"-q:a", "4",
-		"-y",
 		output_path
 	]
 	# No more sudo needed!
