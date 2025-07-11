@@ -16,6 +16,9 @@ func start_recording():
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
+		"-acodec", "pcm_s16le",  # Specify input codec
+		"-ac", "1",              # Mono
+		"-ar", "8000",           # 8000 Hz
 		"-i", "hw:3,0",
 		"-vf", "hwdownload,format=bgr0",
 		"-c:v", "libtheora",
@@ -25,7 +28,6 @@ func start_recording():
 		"-y",
 		output_path
 	]
-	
 	# No more sudo needed!
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
