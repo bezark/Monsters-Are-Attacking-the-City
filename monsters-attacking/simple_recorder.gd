@@ -12,7 +12,7 @@ func start_recording():
 	var output_path = ProjectSettings.globalize_path(recording_path)
 	
 	var args = ["ffmpeg",
-		"-device", "/dev/dri/card1",
+		"-device", "/dev/dri/card0",
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
