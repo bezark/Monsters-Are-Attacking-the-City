@@ -13,7 +13,6 @@ func start_recording():
 	var args = [
 		"-f", "x11grab",
 		"-r", "30",
-		"-s", "1920x1080",
 		"-i", ":0.0",
 		"-f", "alsa",
 		"-i", "hw:1,0",  # Adjust based on your audio device
