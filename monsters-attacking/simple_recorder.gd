@@ -24,6 +24,7 @@ func start_recording():
 		output_path
 	]
 	# No more sudo needed!
+	
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
