@@ -19,7 +19,6 @@ func start_recording():
 		"-r", "30", 
 		"-s", "720x480",
 		"-i", ":0.0",
-		"-draw_mouse", "1",  # Ensure mouse is captured
 		"-f", "alsa",
 		"-i", "hw:3,0",
 		"-c:v", "libtheora",
