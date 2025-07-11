@@ -16,14 +16,13 @@ func start_recording():
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
-		"-ac","1",
-		"-ar","8000",
-		"-i", "hw:3,0",
-		"-vf", "hwdownload,format=bgr0",  # No format specified - let ffmpeg choose
+		"-i", "plughw:3,0",    # Use plughw instead of hw
+		"-vf", "hwdownload",
 		"-c:v", "libtheora",
 		"-q:v", "7",
 		"-c:a", "libvorbis",
 		"-q:a", "4",
+		"-y",
 		output_path
 	]
 	# No more sudo needed!
