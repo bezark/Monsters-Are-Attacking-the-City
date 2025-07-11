@@ -20,6 +20,7 @@ func start_recording():
 	ffmpeg_pid = OS.create_process("wf-recorder", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
+
 func stop_recording():
 	if ffmpeg_pid != -1:
 		OS.execute("kill", ["-INT", str(ffmpeg_pid)])
@@ -28,7 +29,7 @@ func stop_recording():
 		
 		ffmpeg_pid = -1
 		OS.execute("ffmpeg" ,[
-			"-i", "output.mp4", "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", "output.ogv"
+			"-i", "output.mp4", "-vf","scale=720;480", "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", "output.ogv"
 		]
 )
 		print("Recording stopped")
