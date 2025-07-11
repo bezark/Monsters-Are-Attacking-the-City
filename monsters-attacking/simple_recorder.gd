@@ -54,6 +54,7 @@ func _on_record_toggled(toggled_on: bool) -> void:
 		start_recording()
 	else:
 		stop_recording()
+		play_video()
 		
 func play_video():
 	$CenterContainer/VBoxContainer/WebcamTexture.hide()
