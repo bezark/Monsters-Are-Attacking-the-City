@@ -10,22 +10,25 @@ var recording_path: String = "res://recording.ogv"
 
 func start_recording():
 	var output_path = ProjectSettings.globalize_path(recording_path)
+# Before recording, disable compositor
+	OS.execute("xfwm4", ["--compositor=off"])
+
+# Then use original x11grab
 	var args = [
-	"-device", "/dev/dri/card0",
-	"-f", "kmsgrab",
-	"-i", "-",
-	"-vf", "hwmap=derive_device=vaapi,scale_vaapi=w=720:h=480:format=nv12,hwdownload,format=nv12",
-	"-r", "30",
-	"-f", "alsa",
-	"-i", "hw:3,0",
-	"-c:v", "libtheora",
-	"-q:v", "7",
-	"-c:a", "libvorbis",
-	"-q:a", "4",
-	"-y",
-	output_path
+		"-f", "x11grab",
+		"-r", "30", 
+		"-s", "1920x1080",
+		"-i", ":0.0",
+		"-draw_mouse", "1",  # Ensure mouse is captured
+		"-f", "alsa",
+		"-i", "hw:3,0",
+		"-c:v", "libtheora",
+		"-q:v", "7",
+		"-c:a", "libvorbis",
+		"-q:a", "4", 
+		"-y",
+		output_path
 	]
-	
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
