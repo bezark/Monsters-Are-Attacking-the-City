@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-sleep 10
+sleep 5
 
 
 cd /home/monster/Documents/Monsters-Are-Attacking-the-City
