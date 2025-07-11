@@ -11,13 +11,13 @@ var recording_path: String = "res://recording.ogv"
 func start_recording():
 	var output_path = ProjectSettings.globalize_path(recording_path)
 	
-	var args = [
+	var args = ["ffmpeg",
 		"-device", "/dev/dri/card1",
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
 		"-i", "plughw:3,0",    # Use plughw instead of hw
-		"-vf", "hwmap=derive_device=vaapi,scale_vaapi=format=nv12,hwdownload,format=nv12,format=yuv420p",		"-q:v", "7",
+ 		"-vf", "hwdownload,format=bgr0",
 		"-c:a", "libvorbis",
 		"-q:a", "4",
 		"-y",
@@ -25,7 +25,7 @@ func start_recording():
 	]
 	# No more sudo needed!
 	
-	ffmpeg_pid = OS.create_process("ffmpeg", args)
+	ffmpeg_pid = OS.create_process("sudo", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 func stop_recording():
