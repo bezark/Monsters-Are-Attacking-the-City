@@ -11,18 +11,19 @@ var recording_path: String = "res://recording.ogv"
 func start_recording():
 	var output_path = ProjectSettings.globalize_path(recording_path)
 	var args = [
-		"-f", "x11grab",
-		"-r", "30",
-		"-s", "720x480",
-		"-i", ":0.0",
-		"-f", "alsa",
-		"-i", "hw:3,0",  # Adjust based on your audio device
-		"-c:v", "libtheora",
-		"-q:v", "7",
-		"-c:a", "libvorbis", 
-		"-q:a", "4",
-		"-y",  # Overwrite output file
-		output_path
+	"-device", "/dev/dri/card0",
+	"-f", "kmsgrab",
+	"-i", "-",
+	"-vf", "hwmap=derive_device=vaapi,scale_vaapi=w=720:h=480:format=nv12,hwdownload,format=nv12",
+	"-r", "30",
+	"-f", "alsa",
+	"-i", "hw:3,0",
+	"-c:v", "libtheora",
+	"-q:v", "7",
+	"-c:a", "libvorbis",
+	"-q:a", "4",
+	"-y",
+	output_path
 	]
 	
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
