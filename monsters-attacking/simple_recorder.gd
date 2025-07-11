@@ -16,6 +16,7 @@ func start_recording():
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
+		"-channels", "1",
 		"-i", "hw:3,0",
 		"-vf", "hwdownload",  # No format specified - let ffmpeg choose
 		"-c:v", "libtheora",
