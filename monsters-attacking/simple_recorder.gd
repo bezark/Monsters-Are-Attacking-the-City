@@ -17,8 +17,7 @@ func start_recording():
 		"-i", "-",
 		"-f", "alsa",
 		"-i", "plughw:3,0",    # Use plughw instead of hw
-		#"-vf", "hwdownload,format=bgr0",  # No format specified - let ffmpeg choose
-		"-c:v", "libtheora",
+		"-vf", "hwdownload,format=bgr0,format=yuv420p",  # Chain conversions		"-c:v", "libtheora",
 		"-q:v", "7",
 		"-c:a", "libvorbis",
 		"-q:a", "4",
