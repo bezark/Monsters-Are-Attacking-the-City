@@ -16,9 +16,8 @@ func start_recording():
 		"-f", "kmsgrab",
 		"-i", "-",
 		"-f", "alsa",
-		"-acodec", "pcm_s16le",  # Specify input codec
-		"-ac", "1",              # Mono
-		"-ar", "8000",           # 8000 Hz
+		"-channels", "1",
+		"-sample_rate", "8000",
 		"-i", "hw:3,0",
 		"-vf", "hwdownload,format=bgr0",
 		"-c:v", "libtheora",
