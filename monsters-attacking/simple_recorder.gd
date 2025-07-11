@@ -37,6 +37,7 @@ func stop_recording():
 		
 		ffmpeg_pid = -1
 		print("Recording stopped")
+		play_video()
 
 func _exit_tree():
 	# Clean up if still recording
@@ -54,7 +55,7 @@ func _on_record_toggled(toggled_on: bool) -> void:
 		start_recording()
 	else:
 		stop_recording()
-		play_video()
+		
 		
 func play_video():
 	$CenterContainer/VBoxContainer/WebcamTexture.hide()
