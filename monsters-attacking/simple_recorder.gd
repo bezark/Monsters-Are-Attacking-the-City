@@ -33,7 +33,7 @@ func stop_recording():
 		
 		ffmpeg_pid = -1
 		OS.execute("ffmpeg" ,[
-			"-i", str(full_video_path,".mkv"),  "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
+			"-i", str(full_video_path,".mkv"),  "-c:v", "libtheora", "-q:v", "6", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
 		]
 		)
 		print("Recording stopped")
