@@ -11,13 +11,13 @@ var full_video_path: String
 func start_recording():
 	var output_path = ProjectSettings.globalize_path(base_path)
 	current_video = Time.get_datetime_string_from_system()
-	full_video_path = str(output_path,current_video,".ogv")
+	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
 		"-c","libtheora",
 		"-C","libvorbis",
 		"--audio=Andrea_PureAudio,0",
-		str("--file=",full_video_path)
+		str("--file=",full_video_path,".mkv")
 	]
 
 	
@@ -32,10 +32,10 @@ func stop_recording():
 		await get_tree().create_timer(1.0).timeout
 		
 		ffmpeg_pid = -1
-		#OS.execute("ffmpeg" ,[
-			#"-i", str(full_video_path,".mp4"),  "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
-		#]
-		#)
+		OS.execute("ffmpeg" ,[
+			"-i", str(full_video_path,".mkv"),  "-c:v", "libtheora", "-q:v", "4", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
+		]
+		)
 		print("Recording stopped")
 		play_video()
 
@@ -56,7 +56,7 @@ func play_video():
 	print("trying to play video...")
 	$CenterContainer/VBoxContainer/WebcamTexture.hide()
 	video.stream = VideoStreamTheora.new()
-	video.stream.file=str(full_video_path)
+	video.stream.file=str(full_video_path,".ogv")
 	video.show()
 	video.play()
 
