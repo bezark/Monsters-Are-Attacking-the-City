@@ -16,12 +16,12 @@ func start_recording():
 	var args = [
 		"-c","libtheora",
 		"-C", "libvorbis",
-		"--audio=Andrea_PureAudio,0",
+		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
 		str("--file=",full_video_path,".ogv")
 	]
 
 	
-	ffmpeg_pid = OS.create_process("/usr/local/bin/wf-recorder", args)
+	ffmpeg_pid = OS.create_process("wf-recorder", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 
