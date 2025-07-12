@@ -14,10 +14,9 @@ func start_recording():
 	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
-		"-c","libtheora",
-		"-C","libvorbis",
+		"-c","libtheora_libvorbis",
 		"--audio=Andrea_PureAudio,0",
-		str("--file=",full_video_path,".mkv")
+		str("--file=",full_video_path,".ogv")
 	]
 
 	
@@ -31,11 +30,11 @@ func stop_recording():
 		
 		await get_tree().create_timer(1.0).timeout
 		
-		ffmpeg_pid = -1
-		OS.execute("ffmpeg" ,[
-			"-i", str(full_video_path,".mkv"),  "-c:v", "libtheora", "-q:v", "6", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
-		]
-		)
+		#ffmpeg_pid = -1
+		#OS.execute("ffmpeg" ,[
+			#"-i", str(full_video_path,".mkv"),  "-c:v", "libtheora", "-q:v", "6", "-c:a", "libvorbis", "-q:a", "3", str(full_video_path,".ogv")
+		#]
+		#)
 		print("Recording stopped")
 		play_video()
 
