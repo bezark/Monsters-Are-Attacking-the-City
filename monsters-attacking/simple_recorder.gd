@@ -18,7 +18,6 @@ func start_recording():
 		"-p", "q=7", 
 		"-p", "bitrate=2000k", 
 		"-r", "30",
-		"-x", "yuv420p",
 		"-C", "libvorbis",
 		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
 		str("--file=",full_video_path,".ogv")
