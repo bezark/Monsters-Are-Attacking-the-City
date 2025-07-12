@@ -15,7 +15,7 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		"-c","libtheora",
-		#"-p", "q=7", 
+		"-p", "q=7", 
 		"-p", "bitrate=8000k", 
 		"-r", "30",
 		"-C", "libvorbis",
