@@ -63,7 +63,7 @@ func _on_record_toggled(toggled_on: bool) -> void:
 func play_video():
 	print("trying to play video...")
 	$CenterContainer/VBoxContainer/WebcamTexture.hide()
-	video.stream = VideoStreamTheora.new()
+	video.stream = VideoStream.new()
 	video.stream.file=str(full_video_path,".ogv")
 	video.show()
 	video.play()
