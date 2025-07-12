@@ -14,13 +14,14 @@ func start_recording():
 	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
-		"-c","libtheora_libvorbis",
+		"-c","libtheora",
+		"-C", "libvorbis",
 		"--audio=Andrea_PureAudio,0",
 		str("--file=",full_video_path,".ogv")
 	]
 
 	
-	ffmpeg_pid = OS.create_process("wf-recorder", args)
+	ffmpeg_pid = OS.create_process("/usr/local/bin/wf-recorder", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 
