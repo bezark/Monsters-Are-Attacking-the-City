@@ -15,7 +15,7 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		"-c","libtheora",
-		"-p", "qscale=8", 
+		"-p", "quality=63", 
 		"-r", "30",
 		"-C", "libvorbis",
 		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
