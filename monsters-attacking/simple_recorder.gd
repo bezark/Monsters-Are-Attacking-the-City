@@ -15,7 +15,6 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		"-c","libtheora",
-		"-p", "quality=10",  # Set the quality level from 0 (lowest) to 10 (highest)
 		"-p", "bitrate=8000k", 
 		"-C", "libvorbis",
 		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
