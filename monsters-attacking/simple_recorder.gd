@@ -14,8 +14,14 @@ func start_recording():
 	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
-		"-c","libtheora",
-		"-p", "quality=6", 
+		# 1. Set the video codec to VP8
+		"-c", "libvpx",
+		
+		# 2. Set the quality using Constant Rate Factor (CRF). Lower is better. 10 is a good high-quality start.
+		"-p", "crf=10",
+		
+		# 3. As an alternative to CRF, you can control bitrate. Higher is better. (e.g., 8M for 8 Mbps)
+		# "-p", "b:v=8M",
 		"-r", "30",
 		"-C", "libvorbis",
 		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
