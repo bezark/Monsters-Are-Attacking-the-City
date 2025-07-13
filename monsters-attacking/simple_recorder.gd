@@ -14,7 +14,7 @@ func start_recording():
 	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
-		"-v",
+		#"-v",
 		"-c","libtheora",
 		#"-p", "qscale=10",
 		"-r", "30",
