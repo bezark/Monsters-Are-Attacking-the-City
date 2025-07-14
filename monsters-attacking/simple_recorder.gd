@@ -1,6 +1,6 @@
 extends Control
 var ffmpeg_pid: int = -1
-var base_path: String = "user://Videos/"
+var base_path: String = "res://Videos/"
 var current_video : String
 var full_video_path: String 
 
@@ -15,7 +15,6 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		#"-v",
-		"wf-recorder",
 		"-c","libtheora",
 		"-p", "qscale:v=10",
 		"-r", "30",
@@ -25,7 +24,7 @@ func start_recording():
 	]
 
 	
-	ffmpeg_pid = OS.create_process("sudo", args)
+	ffmpeg_pid = OS.create_process("wf-recorder", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 
