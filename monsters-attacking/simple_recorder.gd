@@ -1,6 +1,6 @@
 extends Control
 var ffmpeg_pid: int = -1
-var base_path: String = "res://Videos/"
+var base_path: String = "user://Videos/"
 var current_video : String
 var full_video_path: String 
 
