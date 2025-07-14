@@ -16,7 +16,7 @@ func start_recording():
 	var args = [
 		#"-v",
 		"-c","libtheora",
-		"-p", "qscale:v=10",
+		"-p", "global_quality=63",
 		"-r", "30",
 		"-C", "libvorbis",
 		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
