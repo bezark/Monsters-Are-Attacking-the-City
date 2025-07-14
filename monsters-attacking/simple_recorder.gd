@@ -15,6 +15,7 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		#"-v",
+		"wf-recorder",
 		"-c","libtheora",
 		"-p", "qscale:v=10",
 		"-r", "30",
@@ -24,7 +25,7 @@ func start_recording():
 	]
 
 	
-	ffmpeg_pid = OS.create_process("wf-recorder", args)
+	ffmpeg_pid = OS.create_process("sudo", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 
