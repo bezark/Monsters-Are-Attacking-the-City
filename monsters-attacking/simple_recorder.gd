@@ -15,18 +15,20 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		#"-v",
-		"-c","libtheora",
-		"-b:v", "5000k",     # Explicit bitrate
-		"-minrate", "4000k",  # Minimum bitrate
-		"-maxrate", "6000k",  # Maximum bitrate
-		"-bufsize", "2000k",
-		"-C", "libvorbis",
-		"--audio=alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",
+		"-f", "x11grab", 
+		"-r", "30", 
+		"-s", "480x720", 
+		"-i", ":0.0",
+		"-f", "alsa", 
+		"-i", "alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",  # Or your USB mic device
+		"-c:v", "libtheora", 
+		"-q:v", "10",
+		"-c:a", "libvorbis",
 		str("--file=",full_video_path,".ogv")
 	]
 
 	
-	ffmpeg_pid = OS.create_process("wf-recorder", args)
+	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
 
 
