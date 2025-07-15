@@ -19,6 +19,7 @@ func start_recording():
 		"-s", "720x480", 
 
 		"-f", "alsa",
+		"-i","default",
 
 
 		"-c:v", "libtheora", 
