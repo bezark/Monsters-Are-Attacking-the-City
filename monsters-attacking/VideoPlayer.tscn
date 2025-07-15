@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://dublt7xpc2f07"]
-
-[node name="VideoPlayer" type="VideoStreamPlayer"]
-autoplay = true
