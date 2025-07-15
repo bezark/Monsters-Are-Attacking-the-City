@@ -24,7 +24,7 @@ func start_recording():
 		"-c:v", "libtheora", 
 		"-q:v", "10",
 		"-c:a", "libvorbis",
-		str("--file=",full_video_path,".ogv")
+		str(full_video_path,".ogv")
 	]
 
 	
