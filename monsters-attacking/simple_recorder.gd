@@ -19,7 +19,6 @@ func start_recording():
 		"-r", "30", 
 		"-s", "480x720", 
 		"-i", ":0.0",
-		"-f", "alsa", 
 		"-i", "hw:1,0",  # Or your USB mic device
 		"-c:v", "libtheora", 
 		"-q:v", "10",
