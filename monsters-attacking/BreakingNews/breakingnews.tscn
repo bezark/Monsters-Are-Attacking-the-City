@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=16 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
-[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://BreakingNews/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
+[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
 [ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://BreakingNews/floating_building.gd" id="2_8tfbw"]
+[ext_resource type="AudioStream" uid="uid://cwp4tk2hmaqmh" path="res://Assets/nightly-news-intro-330331.mp3" id="4_qcb1u"]
+[ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="5_nrvyl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -38,6 +40,10 @@ font = ExtResource("1_lqct8")
 horizontal_alignment = 0
 uppercase = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hglix"]
+transparency = 1
+albedo_color = Color(0.545098, 1, 1, 0.368627)
+
 [sub_resource type="Animation" id="Animation_bn4g4"]
 length = 0.001
 tracks/0/type = "value"
@@ -67,7 +73,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../MeshInstance3D:position:x")
+tracks/2/path = NodePath("../News:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -78,7 +84,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../MeshInstance3D:position:y")
+tracks/3/path = NodePath("../News:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -89,7 +95,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../MeshInstance3D:position:z")
+tracks/4/path = NodePath("../News:position:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -100,7 +106,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../MeshInstance3D:rotation:x")
+tracks/5/path = NodePath("../News:rotation:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -111,7 +117,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../MeshInstance3D:rotation:y")
+tracks/6/path = NodePath("../News:rotation:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -122,13 +128,49 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../MeshInstance3D:rotation:z")
+tracks/7/path = NodePath("../News:rotation:z")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Skyline:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.02162)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Newsic:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Swoosh:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hglix"]
@@ -162,7 +204,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../MeshInstance3D:position:x")
+tracks/2/path = NodePath("../News:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -173,7 +215,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../MeshInstance3D:position:y")
+tracks/3/path = NodePath("../News:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -184,7 +226,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../MeshInstance3D:position:z")
+tracks/4/path = NodePath("../News:position:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -195,7 +237,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../MeshInstance3D:rotation:x")
+tracks/5/path = NodePath("../News:rotation:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -206,7 +248,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../MeshInstance3D:rotation:y")
+tracks/6/path = NodePath("../News:rotation:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -217,7 +259,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../MeshInstance3D:rotation:z")
+tracks/7/path = NodePath("../News:rotation:z")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -226,15 +268,157 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.187316, 0.26, 0.733333, 1.18, 4.6, 4.67268)
 }
 
+[sub_resource type="Animation" id="Animation_nrvyl"]
+resource_name = "intro"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.32, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.413343, 0.157624, -0.292472), Vector3(0.10216, 0.157624, -0.292472), Vector3(-0.413343, 0.157624, -0.292472)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.32, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0355392, -0.276078, -0.292472), Vector3(-0.49959, -0.276078, -0.292472), Vector3(0.0355392, -0.276078, -0.292472)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../News:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-1.3303, -0.25, 0, 0.25, 0, -0.330299, -0.25, 0, 0.25, 0, -0.330299, -0.25, 0, 0.25, 0, -1.3303, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 1.96667, 5.13333, 5.46667)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../News:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 1.93333)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../News:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.01317, -0.25, 0, 0.25, 0, -1.01317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 1.93333)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../News:rotation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -2.41091, -0.25, 0, 0.25, 0, -0.209632, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.587316, 0.66, 1.96667, 2.41333, 7.76667, 7.83935)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../News:rotation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.587316, 0.66, 1.96667, 2.41333, 7.76667, 7.83935)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../News:rotation:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.587316, 0.66, 1.96667, 2.41333, 7.76667, 7.83935)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Skyline:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.58, 2.62, 5.23333, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2, 0, -1.02162), Vector3(0, 0, -1.02162), Vector3(0, 0, -1.02162), Vector3(2, 0, -1.02162)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Newsic:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Swoosh:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.86667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("..")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(6.26667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_news"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50e7i"]
 _data = {
 &"RESET": SubResource("Animation_bn4g4"),
-&"idle": SubResource("Animation_hglix")
+&"idle": SubResource("Animation_hglix"),
+&"intro": SubResource("Animation_nrvyl")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hglix"]
-transparency = 1
-albedo_color = Color(0.545098, 1, 1, 0.368627)
 
 [node name="BREAKINGNEWS" type="Node3D"]
 script = ExtResource("1_8tfbw")
@@ -250,7 +434,7 @@ environment = SubResource("Environment_jp42c")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.638286)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="News" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330299, 0, -1.01317)
 mesh = SubResource("TextMesh_5cbmu")
 
@@ -269,12 +453,6 @@ light_energy = 7.06
 light_indirect_energy = 2.276
 omni_range = 1.007
 omni_attenuation = 10.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OmniLight3D2"]
-libraries = {
-&"": SubResource("AnimationLibrary_50e7i")
-}
-autoplay = "idle"
 
 [node name="Skyline" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02162)
@@ -319,3 +497,18 @@ script = ExtResource("2_8tfbw")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
+
+[node name="Newsic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qcb1u")
+bus = &"Crunch"
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nrvyl")
+bus = &"Crunch"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../OmniLight3D2")
+libraries = {
+&"": SubResource("AnimationLibrary_50e7i")
+}
+autoplay = "idle"

@@ -7,4 +7,14 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event:
+		$AnimationPlayer.play("intro")
+		
+
+
+func  play_news():
+	change()
+
+
+		
+func change():
 		get_tree().change_scene_to_file("res://SimpleRecorder.tscn")
