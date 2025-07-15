@@ -17,7 +17,7 @@ func start_recording():
 		"-v", "verbose",
 		"-f", "x11grab", 
 		"-r", "30", 
-		"-s", "480x720", 
+		"-s", "720x480", 
 		"-i", ":0.0",
 		"-f", "alsa", 
 		"-i", "hw:1,0",  # Or your USB mic device
