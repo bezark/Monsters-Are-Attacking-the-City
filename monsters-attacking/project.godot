@@ -33,8 +33,6 @@ movie_writer/movie_file="/home/johnb/3Play/Monsters-Are-Attacking-the-City/monst
 
 [rendering]
 
-gl_compatibility/driver="opengl2_es"
-gl_compatibility/driver.linuxbsd="opengl3_es"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.464353, 0.11678, 0.484874, 1)
