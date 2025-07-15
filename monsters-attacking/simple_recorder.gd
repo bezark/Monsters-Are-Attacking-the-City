@@ -19,6 +19,7 @@ func start_recording():
 
 		"-f", "alsa", "default",
 
+
 		"-c:v", "libtheora", 
 		"-q:v", "10",
 		"-c:a", "libvorbis",
