@@ -25,12 +25,13 @@ func start_recording():
 		"-i", ":0.0",
 
 
-		"-f", "alsa", "default",
-
-
+		#"-f", "alsa", "default",
+#
+#
 
 
 		"-f", "alsa",
+		"-thread_queue_size", "1024",
 
 
 		"-i", "hw:CARD=PureAudio,DEV=0",
@@ -40,7 +41,7 @@ func start_recording():
 		"-q:v", "10",
 
 		"-c:a", "libvorbis",
-		"-f","null","-",
+		"-ac", "1",
 
 		str(full_video_path,".ogv")
 	]
