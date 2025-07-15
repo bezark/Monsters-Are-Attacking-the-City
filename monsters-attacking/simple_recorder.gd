@@ -40,6 +40,7 @@ func start_recording():
 		"-q:v", "10",
 
 		"-c:a", "libvorbis",
+		"-f","null","-",
 
 		str(full_video_path,".ogv")
 	]
