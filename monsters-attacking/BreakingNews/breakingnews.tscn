@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bgugoidm0ni64"]
 
-[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://FrontPageNews11-ADw6.ttf" id="1_hglix"]
-[ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://floating_building.gd" id="2_bn4g4"]
+[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://BreakingNews/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
+[ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://BreakingNews/floating_building.gd" id="2_8tfbw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -33,9 +33,102 @@ clearcoat_roughness = 0.0
 material = SubResource("StandardMaterial3D_jaytn")
 text = "BREAKING
 NEWS"
-font = ExtResource("1_hglix")
+font = ExtResource("1_lqct8")
 horizontal_alignment = 0
 uppercase = true
+
+[sub_resource type="Animation" id="Animation_bn4g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.413343, 0.157624, -0.292472)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0355392, -0.276078, -0.292472)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MeshInstance3D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.330299, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MeshInstance3D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MeshInstance3D:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.01317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MeshInstance3D:rotation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MeshInstance3D:rotation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MeshInstance3D:rotation:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_hglix"]
 resource_name = "idle"
@@ -132,99 +225,6 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.187316, 0.26, 0.733333, 1.18, 4.6, 4.67268)
 }
 
-[sub_resource type="Animation" id="Animation_bn4g4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../OmniLight3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.413343, 0.157624, -0.292472)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0355392, -0.276078, -0.292472)]
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../MeshInstance3D:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.330299, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../MeshInstance3D:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../MeshInstance3D:position:z")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1.01317, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../MeshInstance3D:rotation:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../MeshInstance3D:rotation:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../MeshInstance3D:rotation:z")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50e7i"]
 _data = {
 &"RESET": SubResource("Animation_bn4g4"),
@@ -281,39 +281,39 @@ material_override = SubResource("StandardMaterial3D_hglix")
 [node name="FloatingBuilding" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483831, -0.10199, -0.257971)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773497, 0.14793, -0.675741)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633463, -0.168718, -0.589264)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.673831, 0.234262, -1.07285)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0979722, -0.355035, -1.05417)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.211439, 0.103476, -0.962613)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.461875, -0.168718, -0.960794)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
 size = Vector3(0.202148, 0.796021, 0.246094)
-script = ExtResource("2_bn4g4")
+script = ExtResource("2_8tfbw")

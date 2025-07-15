@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dul6l3qov1dtb"
-path="res://.godot/imported/FrontPageNews11-ADw6.ttf-a3f8b3e0b52a0e19b707ecb7612ddd9f.fontdata"
+path="res://.godot/imported/FrontPageNews11-ADw6.ttf-ab168b0542ea9dc639638506d1ac9c34.fontdata"
 
 [deps]
 
-source_file="res://FrontPageNews11-ADw6.ttf"
-dest_files=["res://.godot/imported/FrontPageNews11-ADw6.ttf-a3f8b3e0b52a0e19b707ecb7612ddd9f.fontdata"]
+source_file="res://BreakingNews/FrontPageNews11-ADw6.ttf"
+dest_files=["res://.godot/imported/FrontPageNews11-ADw6.ttf-ab168b0542ea9dc639638506d1ac9c34.fontdata"]
 
 [params]
 
