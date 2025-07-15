@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=12 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://FrontPageNews11-ADw6.ttf" id="1_hglix"]
+[ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://floating_building.gd" id="2_bn4g4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -277,34 +278,42 @@ autoplay = "idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02162)
 material_override = SubResource("StandardMaterial3D_hglix")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Skyline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398926, -0.10199, -0.256398)
+[node name="FloatingBuilding" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483831, -0.10199, -0.257971)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Skyline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520355, 0.14793, -0.589264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773497, 0.14793, -0.675741)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633463, -0.168718, -0.589264)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Skyline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906532, 0.234262, -1.03197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.673831, 0.234262, -1.07285)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0979722, -0.355035, -1.05417)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.211439, 0.103476, -0.962613)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Skyline"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.854406, -0.168718, -0.181525)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.461875, -0.168718, -0.960794)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
 size = Vector3(0.202148, 0.796021, 0.246094)
+script = ExtResource("2_bn4g4")
