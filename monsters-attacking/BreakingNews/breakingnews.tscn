@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=13 format=3 uid="uid://bgugoidm0ni64"]
 
+[ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://BreakingNews/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
 [ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://BreakingNews/floating_building.gd" id="2_8tfbw"]
 
@@ -236,6 +237,7 @@ transparency = 1
 albedo_color = Color(0.545098, 1, 1, 0.368627)
 
 [node name="BREAKINGNEWS" type="Node3D"]
+script = ExtResource("1_8tfbw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.83053, -0.554532, -0.0520943, 0.498851, -0.7822, 0.373244, -0.247724, 0.284004, 0.926269, 0, 0, 0)
