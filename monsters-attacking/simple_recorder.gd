@@ -19,7 +19,7 @@ func start_recording():
 		"-r", "30", 
 		"-s", "720x480", 
 		"-i", ":0.0",
-		"-f", "alsa", 
+		"-f", "alsa", "default",
 		#"-i", "alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",  # Or your USB mic device
 		"-c:v", "libtheora", 
 		"-q:v", "10",
