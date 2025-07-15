@@ -14,13 +14,11 @@ func start_recording():
 	full_video_path = str(output_path,current_video)
 	print(full_video_path)
 	var args = [
-		"-v", "verbose",
-		"-f", "lavfi", 
-		#"-r", "30", 
-		#"-s", "720x480", 
-		"-i", "color=c=black:s=720x480:r=30",
-		"-f", "alsa",
-		"-i", "default",#"alsa_input.usb-Andrea_Electronics_Andrea_PureAudio-00.analog-stereo",  # Or your USB mic device
+		"-r", "30", 
+		"-s", "720x480", 
+		"-i", ":0.0",
+		"-f", "alsa", "default",
+
 		"-c:v", "libtheora", 
 		"-q:v", "10",
 		"-c:a", "libvorbis",
