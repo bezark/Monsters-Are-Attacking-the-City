@@ -15,37 +15,34 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		"-v", "verbose",
-
-		"-f", "x11grab", 
-
-		"-r", "30", 
-
-		"-s", "720x480", 
-
-		"-i", ":0.0",
-
-
-		#"-f", "alsa", "default",
-#
-#
-
-
+		
+		# Audio input FIRST (helps with sync)
 		"-f", "alsa",
-		"-thread_queue_size", "1024",
-
-
+		"-thread_queue_size", "2048",  # Increase buffer
+		"-ar", "44100",  # Set sample rate explicitly
+		"-ac", "1",  # Mono
 		"-i", "hw:CARD=PureAudio,DEV=0",
-
+		
+		# Video input SECOND
+		"-f", "x11grab", 
+		"-r", "30",
+		"-video_size", "720x480",  # Use -video_size instead of -s
+		"-i", ":0.0",
+		
+		# Sync and timing options
+		"-use_wallclock_as_timestamps", "1",  # Better timestamp handling
+		"-async", "1",  # Audio sync
+		"-vsync", "1",  # Video sync
+		
+		# Encoding options
 		"-c:v", "libtheora", 
-
 		"-q:v", "10",
-
 		"-c:a", "libvorbis",
-		"-ac", "1",
-
-		str(full_video_path,".ogv")
+		"-q:a", "5",  # Audio quality
+		
+		# Output
+		str(full_video_path, ".ogv")
 	]
-
 	
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
 	print("Started recording with PID: ", ffmpeg_pid)
