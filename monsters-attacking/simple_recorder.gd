@@ -16,7 +16,7 @@ func start_recording():
 	var args = [
 		"-r", "30", 
 		"-s", "720x480", 
-		"-i", ":0.0",
+
 		"-f", "alsa", "default",
 
 		"-c:v", "libtheora", 
