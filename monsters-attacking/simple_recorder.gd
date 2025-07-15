@@ -15,6 +15,7 @@ func start_recording():
 	print(full_video_path)
 	var args = [
 		"-v", "verbose",
+		"-f", "x11grab",
 		"-r", "30", 
 		"-s", "720x480", 
 
