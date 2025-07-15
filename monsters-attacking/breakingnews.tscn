@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=11 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://FrontPageNews11-ADw6.ttf" id="1_hglix"]
 
@@ -13,11 +13,16 @@ sky_material = SubResource("ProceduralSkyMaterial_bn4g4")
 background_mode = 3
 sky = SubResource("Sky_50e7i")
 tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaytn"]
 metallic = 1.0
 metallic_specular = 1.0
-roughness = 0.11
+roughness = 0.18
+emission_enabled = true
+emission = Color(0.517647, 0, 0, 1)
+emission_operator = 1
 rim_enabled = true
 rim_tint = 0.6
 clearcoat_enabled = true
@@ -225,6 +230,10 @@ _data = {
 &"idle": SubResource("Animation_hglix")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hglix"]
+transparency = 1
+albedo_color = Color(0.545098, 1, 1, 0.368627)
+
 [node name="BREAKINGNEWS" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -236,7 +245,7 @@ directional_shadow_max_distance = 1.0
 environment = SubResource("Environment_jp42c")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.579227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.638286)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330299, 0, -1.01317)
@@ -263,3 +272,39 @@ libraries = {
 &"": SubResource("AnimationLibrary_50e7i")
 }
 autoplay = "idle"
+
+[node name="Skyline" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02162)
+material_override = SubResource("StandardMaterial3D_hglix")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398926, -0.10199, -0.256398)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520355, 0.14793, -0.589264)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633463, -0.168718, -0.589264)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.906532, 0.234262, -1.03197)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0979722, -0.355035, -1.05417)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.211439, 0.103476, -0.962613)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.854406, -0.168718, -0.181525)
+size = Vector3(0.202148, 0.796021, 0.246094)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Skyline"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
+size = Vector3(0.202148, 0.796021, 0.246094)
