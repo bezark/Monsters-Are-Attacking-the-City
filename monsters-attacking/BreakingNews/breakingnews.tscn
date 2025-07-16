@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=18 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
 [ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://BreakingNews/floating_building.gd" id="2_8tfbw"]
 [ext_resource type="AudioStream" uid="uid://cwp4tk2hmaqmh" path="res://Assets/nightly-news-intro-330331.mp3" id="4_qcb1u"]
 [ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="5_nrvyl"]
+[ext_resource type="PackedScene" uid="uid://clgyfky38v65i" path="res://commercials.tscn" id="6_q84x5"]
+[ext_resource type="PackedScene" uid="uid://ca35ig0ds8ax7" path="res://Prompt.tscn" id="7_ikqud"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -271,7 +273,6 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_nrvyl"]
 resource_name = "intro"
 length = 15.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -423,22 +424,25 @@ _data = {
 [node name="BREAKINGNEWS" type="Node3D"]
 script = ExtResource("1_8tfbw")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.83053, -0.554532, -0.0520943, 0.498851, -0.7822, 0.373244, -0.247724, 0.284004, 0.926269, 0, 0, 0)
+[node name="Intro" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Intro"]
+transform = Transform3D(-0.83053, -0.554532, -0.052094, 0.498851, -0.7822, 0.373245, -0.247724, 0.284004, 0.926269, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Intro"]
 environment = SubResource("Environment_jp42c")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.638286)
 
-[node name="News" type="MeshInstance3D" parent="."]
+[node name="News" type="MeshInstance3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.330299, 0, -1.01317)
 mesh = SubResource("TextMesh_5cbmu")
+skeleton = NodePath("../..")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413343, 0.157624, -0.292472)
 light_color = Color(1, 0.121569, 0.356863, 1)
 light_energy = 7.06
@@ -446,7 +450,7 @@ light_indirect_energy = 2.276
 omni_range = 1.007
 omni_attenuation = 10.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0355392, -0.276078, -0.292472)
 light_color = Color(0.475673, 0.35013, 0.350601, 1)
 light_energy = 7.06
@@ -454,61 +458,76 @@ light_indirect_energy = 2.276
 omni_range = 1.007
 omni_attenuation = 10.0
 
-[node name="Skyline" type="CSGCombiner3D" parent="."]
+[node name="Skyline" type="CSGCombiner3D" parent="Intro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02162)
 material_override = SubResource("StandardMaterial3D_hglix")
 
-[node name="FloatingBuilding" type="CSGBox3D" parent="Skyline"]
+[node name="FloatingBuilding" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483831, -0.10199, -0.257971)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773497, 0.14793, -0.675741)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633463, -0.168718, -0.589264)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.673831, 0.234262, -1.07285)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0979722, -0.355035, -1.05417)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.211439, 0.103476, -0.962613)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.461875, -0.168718, -0.960794)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="Skyline"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Intro/Skyline"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
-[node name="Newsic" type="AudioStreamPlayer" parent="."]
+[node name="Newsic" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("4_qcb1u")
 bus = &"Crunch"
 
-[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+[node name="Swoosh" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("5_nrvyl")
 bus = &"Crunch"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Intro"]
 root_node = NodePath("../OmniLight3D2")
 libraries = {
 &"": SubResource("AnimationLibrary_50e7i")
 }
 autoplay = "idle"
+
+[node name="Commercials" parent="." instance=ExtResource("6_q84x5")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Prompt" parent="." instance=ExtResource("7_ikqud")]
+visible = false
+
+[connection signal="commercial_finished" from="Commercials" to="." method="_on_commercials_commercial_finished"]
+[connection signal="prompt_finished" from="Prompt" to="." method="_on_prompt_prompt_finished"]

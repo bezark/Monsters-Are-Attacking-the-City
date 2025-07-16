@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://clgyfky38v65i"]
+
+[ext_resource type="VideoStream" uid="uid://be1p843r540he" path="res://Assets/commercials.ogv" id="1_pn3n7"]
+[ext_resource type="Script" uid="uid://dk0no6edjoks2" path="res://commercials.gd" id="2_jjf8t"]
+
+[node name="Commercials" type="VideoStreamPlayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_pn3n7")
+autoplay = true
+paused = true
+script = ExtResource("2_jjf8t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

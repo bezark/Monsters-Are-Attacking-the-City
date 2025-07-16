@@ -23,7 +23,7 @@ driver/enable_input=true
 
 [autoload]
 
-Globals="*res://Globals.gd"
+Globals="*res://Globals.tscn"
 
 [display]
 
