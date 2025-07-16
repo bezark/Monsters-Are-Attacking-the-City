@@ -11,5 +11,6 @@ func play_ads():
 
 func _on_timer_timeout() -> void:
 	hide()
+	print('times up')
 	paused = true
 	commercial_finished.emit()

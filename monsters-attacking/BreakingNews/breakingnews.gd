@@ -1,19 +1,21 @@
 extends Node3D
-
+var idling = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func begin_newscast():
+	clips_played = 0
 	$Intro.show()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$Intro/AnimationPlayer.play("intro")
 
 
 func _input(event: InputEvent) -> void:
-	if event:
+	if event and idling:
 		$Intro/AnimationPlayer.play("intro")
+		idling = false
 
 
 var clips_played = 0
@@ -21,7 +23,8 @@ var clips_played = 0
 
 func play_news():
 	$Intro.hide()
-	clips_played = 0
+	
+	print(clips_played)
 	if clips_played >= Globals.newscast.clips.size():
 		print('showing prompt')
 		$Prompt.show()
@@ -44,4 +47,4 @@ func _on_commercials_commercial_finished() -> void:
 
 
 func _on_prompt_prompt_finished() -> void:
-	pass  # Replace with function body.
+	begin_newscast()

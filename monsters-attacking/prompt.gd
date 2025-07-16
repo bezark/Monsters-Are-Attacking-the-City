@@ -16,6 +16,7 @@ func _on_commercial_button_down() -> void:
 	Globals.newscast.clips.append(commercials)
 	# print(Globals.newscast.clips)
 	Globals.save()
+	finish_prompt()
 
 
 func finish_prompt():
