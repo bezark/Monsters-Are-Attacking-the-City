@@ -14,6 +14,8 @@ size_flags_vertical = 3
 stream = ExtResource("1_pn3n7")
 autoplay = true
 paused = true
+expand = true
+bus = &"Crunch"
 script = ExtResource("2_jjf8t")
 
 [node name="Timer" type="Timer" parent="."]
