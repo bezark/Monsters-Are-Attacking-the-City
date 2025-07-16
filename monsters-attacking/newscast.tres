@@ -1,32 +1,8 @@
-[gd_resource type="Resource" script_class="Newscast" load_steps=7 format=3 uid="uid://ch3takjdxi8t2"]
+[gd_resource type="Resource" script_class="Newscast" load_steps=3 format=3 uid="uid://ch3takjdxi8t2"]
 
 [ext_resource type="Script" uid="uid://cl3g8uuxnd5q0" path="res://Clip.gd" id="1_40754"]
 [ext_resource type="Script" uid="uid://co0mqjv1ac432" path="res://Newscast.gd" id="2_ekhdm"]
 
-[sub_resource type="Resource" id="Resource_40754"]
-script = ExtResource("1_40754")
-type = "commercial"
-vid = ""
-text = ""
-
-[sub_resource type="Resource" id="Resource_ekhdm"]
-script = ExtResource("1_40754")
-type = "commercial"
-vid = ""
-text = ""
-
-[sub_resource type="Resource" id="Resource_c8cpp"]
-script = ExtResource("1_40754")
-type = "commercial"
-vid = ""
-text = ""
-
-[sub_resource type="Resource" id="Resource_34w1g"]
-script = ExtResource("1_40754")
-type = "commercial"
-vid = ""
-text = ""
-
 [resource]
 script = ExtResource("2_ekhdm")
-clips = Array[ExtResource("1_40754")]([SubResource("Resource_40754"), SubResource("Resource_ekhdm"), SubResource("Resource_c8cpp"), SubResource("Resource_34w1g")])
+clips = Array[ExtResource("1_40754")]([])
