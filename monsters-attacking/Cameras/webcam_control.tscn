@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://v2iy6svfm1gl"]
+
+[ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://Cameras/webcam_control.gd" id="1_8tba0"]
+
+[node name="WebcamControl" type="Node"]
+script = ExtResource("1_8tba0")
+DEVICE_NAME = "Logitech BRIO"

@@ -6,9 +6,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
-func _on_more_news_button_down() -> void:
-	pass
-
+	
 
 func _on_commercial_button_down() -> void:
 	var commercials = Clip.new()
@@ -22,3 +20,8 @@ func _on_commercial_button_down() -> void:
 func finish_prompt():
 	hide()
 	prompt_finished.emit()
+
+
+func _on_more_news_button_up() -> void:
+	$Initial.hide()
+	get_tree().change_scene_to_file("res://Cameras/Recorder.tscn")

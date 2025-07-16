@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://clviwfuarkpwl"]
+
+[ext_resource type="Script" uid="uid://n23m8m4rd8kr" path="res://Cameras/recorder.gd" id="1_d0184"]
+[ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://Cameras/webcam.tres" id="2_oy6hb"]
+[ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://Cameras/webcam_control.gd" id="2_x6u7j"]
+
+[node name="SimpleRecorder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d0184")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Video" type="VideoStreamPlayer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WebcamTexture" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(480, 320)
+layout_mode = 2
+texture = ExtResource("2_oy6hb")
+expand_mode = 1
+
+[node name="WebcamControl" type="Node" parent="CenterContainer/VBoxContainer/WebcamTexture"]
+script = ExtResource("2_x6u7j")
+DEVICE_NAME = "Camera         "
+FORMAT_INDEX = 1
+camera_texture = ExtResource("2_oy6hb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Record" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Record..."
+
+[connection signal="finished" from="CenterContainer/VBoxContainer/Video" to="." method="_on_video_finished"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/HBoxContainer/Record" to="." method="_on_record_toggled"]

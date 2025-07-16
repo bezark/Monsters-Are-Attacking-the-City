@@ -9,6 +9,7 @@ func begin_newscast():
 	clips_played = 0
 	$Intro.show()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	$Commercials.play()
 	$Intro/AnimationPlayer.play("intro")
 
 
