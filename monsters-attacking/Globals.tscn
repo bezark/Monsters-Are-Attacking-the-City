@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://21haevrrjgww"]
 
 [ext_resource type="Script" uid="uid://xgentxaaasti" path="res://Globals.gd" id="1_acxym"]
-[ext_resource type="Resource" uid="uid://brj4wfq6ypnlb" path="res://Videos/newscast.tres" id="2_7ukqg"]
+[ext_resource type="Resource" uid="uid://de1llt3xm7dng" path="res://Videos/newscast.tres" id="2_7ukqg"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_acxym")
 newscast = ExtResource("2_7ukqg")
-all_prompts = Array[String](["WE  WILL NEVER FORGET", "MONSTERS RULE", "THE LOSS IS UNIMAGINABLE", "THE CITY REBUILDS", ""])
+all_prompts = Array[String](["DESTRUCTION IS STAGGERING", "FEDERAL GOVERNMENT NOWHERE TO BE FOUND", "MONSTERS RULE", "THE LOSS IS UNIMAGINABLE", "MONSTER MASH", "THE CITY REBUILDS", "5 YEARS SINCE MONSTERS ATTACKED", "MEMORIAL BUILT", "WE  WILL NEVER FORGET", "10 YEARS SINCE MONSTERS ATTACKED", "MONSTERS ARE BACK", "THE  MONSTER  WAS INSIDE US ALL ALONG", "MONSTERS  BECOME CITIZENS", "FIRST MONSTER MAYOR", "HUMANS ARE ATTACKING  THE CITY THOUSANDS WILL DIE", "THE  END  IS  NEIGH", ""])
 
 [node name="Debug" type="Label" parent="."]
 visible = false

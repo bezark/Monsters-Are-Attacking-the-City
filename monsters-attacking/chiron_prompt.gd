@@ -4,6 +4,10 @@ var option1 : String
 var option2 : String
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if Globals.newscast.prompts.size() <= 2:
+		Globals.newscast.prompts = Globals.all_prompts
+		Globals.newscast.prompts.shuffle()
+		Globals.save()
 	option1 = Globals.newscast.prompts.pop_front()
 	option2 = Globals.newscast.prompts.pop_front()
 	%Option1.text = option1
