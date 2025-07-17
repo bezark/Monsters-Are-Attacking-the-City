@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://csm2pjky8crs3"]
+
+[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_veqiu"]
+
+[sub_resource type="Gradient" id="Gradient_u6jd5"]
+offsets = PackedFloat32Array(0, 0.526012, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.522033, 0.478747, 0.720081, 1, 0.249013, 0.77384, 0.878352, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0y07j"]
+gradient = SubResource("Gradient_u6jd5")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsys5"]
+texture = SubResource("GradientTexture2D_0y07j")
+
+[sub_resource type="Gradient" id="Gradient_cy8i0"]
+offsets = PackedFloat32Array(0, 0.526012, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.522033, 0.478747, 0.720081, 1, 0.249013, 0.77384, 0.878352, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ddyss"]
+gradient = SubResource("Gradient_cy8i0")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_242rm"]
+texture = SubResource("GradientTexture2D_ddyss")
+
+[resource]
+Button/colors/font_color = Color(1, 0.394475, 0.326094, 1)
+Button/colors/font_focus_color = Color(1, 0.394475, 0.326094, 1)
+Button/colors/font_hover_color = Color(1, 0.683333, 0, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_veqiu")
+Button/styles/hover = SubResource("StyleBoxTexture_lsys5")
+Button/styles/normal = SubResource("StyleBoxTexture_242rm")
+Label/colors/font_color = Color(1, 0.388235, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_veqiu")

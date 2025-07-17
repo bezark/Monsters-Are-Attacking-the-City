@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca35ig0ds8ax7"]
+[gd_scene load_steps=4 format=3 uid="uid://ca35ig0ds8ax7"]
 
 [ext_resource type="Script" uid="uid://c3onyv5j73jgp" path="res://prompt.gd" id="1_88rr7"]
+
+[sub_resource type="Gradient" id="Gradient_88rr7"]
+offsets = PackedFloat32Array(0, 0.653333, 0.813333, 0.955684)
+colors = PackedColorArray(1, 1, 1, 1, 0.0379295, 0.624539, 0.883794, 1, 1, 1, 1, 1, 0.694261, 0.0272132, 0.0403634, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fwae"]
+gradient = SubResource("Gradient_88rr7")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.48433, 0.48433)
+fill_to = Vector2(1, 1)
 
 [node name="Prompt" type="Control"]
 layout_mode = 3
@@ -11,6 +23,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88rr7")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3fwae")
+
 [node name="Initial" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 247.0
@@ -19,26 +40,41 @@ offset_right = 287.0
 offset_bottom = 223.0
 
 [node name="Label" type="Label" parent="Initial"]
-layout_mode = 0
-offset_right = 158.0
-offset_bottom = 23.0
-text = "What happens next?"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.825
+anchor_top = 0.1
+anchor_right = 2.825
+anchor_bottom = 0.1
+offset_left = -227.0
+offset_top = -31.0
+offset_right = 226.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "WHAT HAPPENS NEXT?"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Commercial" type="Button" parent="Initial"]
 layout_mode = 0
-offset_left = -96.0
-offset_top = 134.0
-offset_right = 55.0
-offset_bottom = 165.0
-text = "Commercial Break"
+offset_left = 173.0
+offset_top = 128.0
+offset_right = 396.0
+offset_bottom = 213.0
+text = "COMMERCIAL BREAK"
 
 [node name="More News" type="Button" parent="Initial"]
 layout_mode = 0
-offset_left = 134.0
-offset_top = 133.0
-offset_right = 285.0
-offset_bottom = 164.0
-text = "More News"
+offset_left = -130.0
+offset_top = 128.0
+offset_right = 93.0
+offset_bottom = 213.0
+text = "MORE NEWS"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0

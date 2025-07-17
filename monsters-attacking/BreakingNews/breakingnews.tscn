@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=21 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
@@ -45,6 +45,27 @@ uppercase = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hglix"]
 transparency = 1
 albedo_color = Color(0.545098, 1, 1, 0.368627)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikqud"]
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.18
+emission_enabled = true
+emission = Color(0.517647, 0, 0, 1)
+emission_operator = 1
+rim_enabled = true
+rim_tint = 0.6
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+
+[sub_resource type="TextMesh" id="TextMesh_nq4w2"]
+material = SubResource("StandardMaterial3D_ikqud")
+text = "CLICK  to begin..."
+font = ExtResource("1_lqct8")
+font_size = 4
+horizontal_alignment = 0
+uppercase = true
+depth = 0.01
 
 [sub_resource type="Animation" id="Animation_bn4g4"]
 length = 0.001
@@ -503,6 +524,11 @@ script = ExtResource("2_8tfbw")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424579, 0.234262, -0.110055)
 size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
+
+[node name="Begin" type="MeshInstance3D" parent="Intro/Skyline"]
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 0.118562, -0.210977, 0.00845003)
+mesh = SubResource("TextMesh_nq4w2")
+skeleton = NodePath("../../..")
 
 [node name="Newsic" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("4_qcb1u")

@@ -38,6 +38,10 @@ window/stretch/scale_mode="integer"
 
 movie_writer/movie_file="/home/johnb/3Play/Monsters-Are-Attacking-the-City/monsters-attacking/test2.ogv"
 
+[gui]
+
+theme/custom="uid://csm2pjky8crs3"
+
 [input]
 
 ui_cancel={
