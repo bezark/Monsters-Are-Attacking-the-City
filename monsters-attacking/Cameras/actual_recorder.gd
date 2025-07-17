@@ -69,11 +69,11 @@ func start_recording():
 			"-video_size", "720x480",  # Use -video_size instead of -s
 			"-i", ":0.0",
 			
-			# Sync and timing options
-			"-use_wallclock_as_timestamps", "1",  # Better timestamp handling
-			"-async", "1",  # Audio sync
-			"-vsync", "1",  # Video sync
-			
+			## Sync and timing options
+			#"-use_wallclock_as_timestamps", "1",  # Better timestamp handling
+			#"-async", "1",  # Audio sync
+			#"-vsync", "1",  # Video sync
+			#
 			# Encoding options
 			"-c:v", "libtheora", 
 			"-q:v", "10",
