@@ -1,4 +1,8 @@
 extends Node3D
+
+@export var min_chiron = 3
+@export var max_chiron = 10
+
 var idling = true
 
 func _ready() -> void:
@@ -23,7 +27,7 @@ func _input(event: InputEvent) -> void:
 
 
 var clips_played = 0
-
+var time_since_chiron = 0
 
 func play_news():
 	$Intro.hide()
@@ -31,10 +35,14 @@ func play_news():
 	
 	
 	if clips_played >= Globals.newscast.clips.size():
+		if time_since_chiron > randi_range(min_chiron,max_chiron):
+			get_tree().change_scene_to_file("res://ChironPrompt.tscn")
+			
 		$Prompt.reveal()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	else:
+		time_since_chiron +=1
 		var clip: Clip = Globals.newscast.clips[clips_played]
 		clips_played += 1
 		match clip.type:
@@ -46,7 +54,10 @@ func play_news():
 				$News.play()
 				$News.show()
 				$Commercials.hide()
-
+			'chiron':
+				$Intro/Headline.mesh.text = clip.text
+				$Intro/AnimationPlayer.play("transition")
+				$News/Chiron.text = clip.text
 
 func change():
 	get_tree().change_scene_to_file("res://SimpleRecorder.tscn")

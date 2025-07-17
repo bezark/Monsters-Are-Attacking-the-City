@@ -11,7 +11,7 @@ gradient = SubResource("Gradient_88rr7")
 width = 128
 height = 128
 fill = 2
-fill_from = Vector2(0.48433, 0.48433)
+fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="Prompt" type="Control"]
@@ -62,9 +62,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Commercial" type="Button" parent="Initial"]
 layout_mode = 0
-offset_left = 173.0
+offset_left = 130.0
 offset_top = 128.0
-offset_right = 396.0
+offset_right = 363.0
 offset_bottom = 213.0
 text = "COMMERCIAL BREAK"
 

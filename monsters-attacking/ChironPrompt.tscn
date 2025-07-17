@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfdgkd2j2lm5"]
+
+[ext_resource type="Script" uid="uid://dcis0gu4k7tl0" path="res://chiron_prompt.gd" id="1_hhx1k"]
+
+[sub_resource type="Gradient" id="Gradient_88rr7"]
+offsets = PackedFloat32Array(0, 0.653333, 0.813333, 0.955684)
+colors = PackedColorArray(1, 1, 1, 1, 0.0379295, 0.624539, 0.883794, 1, 1, 1, 1, 1, 0.694261, 0.0272132, 0.0403634, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fwae"]
+gradient = SubResource("Gradient_88rr7")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="ChironPrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhx1k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3fwae")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "SELECT THE NEXT HEADLINE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option1" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CHIRON"
+autowrap_mode = 3
+
+[node name="Option2" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CHIRON"
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="button_up" from="VBoxContainer/Option1" to="." method="_on_option_1_button_up"]
+[connection signal="button_up" from="VBoxContainer/Option2" to="." method="_on_option_2_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
