@@ -42,7 +42,7 @@ font = ExtResource("1_lqct8")
 horizontal_alignment = 0
 uppercase = true
 autowrap_mode = 3
-width = 280.0
+width = 120.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaytn"]
 metallic = 1.0
@@ -667,7 +667,7 @@ _data = {
 
 [node name="BREAKINGNEWS" type="Node3D"]
 script = ExtResource("1_8tfbw")
-min_chiron = 1
+min_chiron = 2
 max_chiron = 2
 
 [node name="Intro" type="Node3D" parent="."]
