@@ -35,7 +35,7 @@ func play_news():
 	
 	
 	if clips_played >= Globals.newscast.clips.size():
-		if time_since_chiron > randi_range(min_chiron,max_chiron):
+		if time_since_chiron >= randi_range(min_chiron,max_chiron):
 			get_tree().change_scene_to_file("res://ChironPrompt.tscn")
 			
 		$Prompt.reveal()
@@ -55,9 +55,12 @@ func play_news():
 				$News.show()
 				$Commercials.hide()
 			'chiron':
+				time_since_chiron = 0
 				$Intro/Headline.mesh.text = clip.text
-				$Intro/AnimationPlayer.play("transition")
 				$News/Chiron.text = clip.text
+				$News.hide()
+				$Commercials.hide()
+				$Intro/AnimationPlayer.play("transition")
 
 func change():
 	get_tree().change_scene_to_file("res://SimpleRecorder.tscn")
