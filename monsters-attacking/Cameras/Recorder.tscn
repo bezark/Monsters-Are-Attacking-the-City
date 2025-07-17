@@ -109,7 +109,23 @@ size_flags_vertical = 8
 text = "Submit
 "
 
+[node name="Timer" type="Timer" parent="CenterContainer/Buttons"]
+wait_time = 30.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="RecordingTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="CenterContainer/Video" to="." method="_on_video_finished"]
 [connection signal="button_up" from="CenterContainer/Buttons/Redo" to="." method="_on_redo_button_up"]
 [connection signal="pressed" from="CenterContainer/Buttons/Submit" to="." method="_on_submit_pressed"]
+[connection signal="timeout" from="CenterContainer/Buttons/Timer" to="." method="_on_buttons_timer_timeout"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="RecordingTimer" to="." method="_on_recording_timer_timeout"]

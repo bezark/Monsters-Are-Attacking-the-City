@@ -3,10 +3,13 @@ var idling = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if Globals.should_play:
+		begin_newscast()
 
 
 func begin_newscast():
 	clips_played = 0
+	Globals.should_play = false
 	$Intro.show()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	$Commercials.play()
@@ -26,9 +29,9 @@ func play_news():
 	$Intro.hide()
 	
 	
+	
 	if clips_played >= Globals.newscast.clips.size():
-		print('showing prompt')
-		$Prompt.show()
+		$Prompt.reveal()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	else:

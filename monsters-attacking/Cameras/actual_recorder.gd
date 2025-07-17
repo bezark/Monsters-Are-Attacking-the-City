@@ -20,8 +20,11 @@ func _input(event: InputEvent) -> void:
 				$Countdown.show()
 				$Countdown/Timer.start()
 				$Whoosh.play()
+				$IdleTimer.stop()
 				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+				$RecordingTimer.start()
 			'recording':
+				$RecordingTimer.stop()
 				stop_recording()
 				
 
@@ -160,6 +163,7 @@ func play_video():
 
 func _on_video_finished() -> void:
 	$CenterContainer/Buttons.show()
+	$CenterContainer/Buttons/Timer.start()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -176,6 +180,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_redo_button_up() -> void:
+	$CenterContainer/Buttons/Timer.stop()
 	var videos = DirAccess.open('res://Videos')
 	videos.remove(str(current_video,'.ogv'))
 	countdown = 3
@@ -191,8 +196,23 @@ func _on_redo_button_up() -> void:
 
 func _on_submit_pressed() -> void:
 	print('submitting')
+	$CenterContainer/Buttons/Timer.stop()
 	var new_clip:= Clip.new()
 	new_clip.vid = str(full_video_path, ".ogv")
 	Globals.newscast.clips.append(new_clip)
 	Globals.save()
+	Globals.should_play = true
 	get_tree().change_scene_to_file("res://BreakingNews/breakingnews.tscn")
+
+
+func _on_idle_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://BreakingNews/breakingnews.tscn")
+
+
+
+func _on_recording_timer_timeout() -> void:
+	stop_recording()
+
+
+func _on_buttons_timer_timeout() -> void:
+	_on_submit_pressed()

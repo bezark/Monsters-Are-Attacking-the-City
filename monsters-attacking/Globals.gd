@@ -2,7 +2,7 @@ extends Node
 
 @export var newscast: Newscast
 var counter = 0
-
+var should_play = false
 func _ready() -> void:
 	newscast = ResourceLoader.load("res://Videos/newscast.tres")
 
