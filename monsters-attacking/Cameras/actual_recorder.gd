@@ -98,8 +98,8 @@ func stop_recording():
 	if ffmpeg_pid != -1 and recording:
 		recording = false
 		
-		# Method 1: Use SIGINT (Ctrl+C) - allows FFmpeg to finalize properly
-		OS.execute("kill", ["-INT", str(ffmpeg_pid)])
+		## Method 1: Use SIGINT (Ctrl+C) - allows FFmpeg to finalize properly
+		#OS.execute("kill", ["-INT", str(ffmpeg_pid)])
 		
 		# Give FFmpeg more time to flush buffers and finalize the file
 		var wait_time = 0.0
