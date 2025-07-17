@@ -56,6 +56,7 @@ func play_news():
 				$Commercials.hide()
 			'chiron':
 				time_since_chiron = 0
+				$Intro.show()
 				$Intro/Headline.mesh.text = clip.text
 				$News/Chiron.text = clip.text
 				$News.hide()
