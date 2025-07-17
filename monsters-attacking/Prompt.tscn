@@ -78,6 +78,7 @@ text = "MORE NEWS"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
+one_shot = true
 
 [connection signal="button_down" from="Initial/Commercial" to="." method="_on_commercial_button_down"]
 [connection signal="button_up" from="Initial/More News" to="." method="_on_more_news_button_up"]

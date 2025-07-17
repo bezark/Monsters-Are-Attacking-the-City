@@ -22,6 +22,7 @@ func _on_commercial_button_down() -> void:
 
 func finish_prompt():
 	hide()
+	$Timer.stop()
 	prompt_finished.emit()
 
 
