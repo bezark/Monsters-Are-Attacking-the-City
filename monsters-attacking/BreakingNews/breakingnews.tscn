@@ -598,8 +598,7 @@ size_flags_vertical = 3
 stream = SubResource("VideoStreamTheora_ikqud")
 
 [node name="Chiron" parent="News" instance=ExtResource("7_nq4w2")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
 
 [node name="Prompt" parent="." instance=ExtResource("7_ikqud")]
 visible = false
