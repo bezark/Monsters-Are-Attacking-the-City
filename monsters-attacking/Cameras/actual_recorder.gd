@@ -59,7 +59,7 @@ func start_recording():
 		# Important: Set format flags BEFORE inputs
 		"-f", "alsa",
 		"-thread_queue_size", "1024",
-		"-buffer_size", "192000",
+		"-buffer_size", "2048",
 		"-ar", "44100",
 		"-ac", "1",
 		"-i", "hw:CARD=PureAudio,DEV=0",
