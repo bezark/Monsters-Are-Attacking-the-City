@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func begin_newscast():
 	clips_played = 0
+	$News.hide()
 	Globals.should_play = false
 	$Intro.show()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
