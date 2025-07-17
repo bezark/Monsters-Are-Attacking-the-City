@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			'recording':
 				stop_recording()
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				
 
 
 
@@ -108,7 +108,8 @@ func play_video():
 
 
 func _on_video_finished() -> void:
-	pass
+	$CenterContainer/Buttons.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _on_timer_timeout() -> void:
@@ -121,3 +122,20 @@ func _on_timer_timeout() -> void:
 		$Countdown.hide()
 		start_recording()
 	
+
+
+func _on_redo_button_up() -> void:
+	var videos = DirAccess
+	videos.remove_absolute(full_video_path)
+	countdown = 3
+	$CenterContainer/Buttons.hide()
+	$WebcamTexture.show()
+	video.hide()
+	$Countdown.show()
+	$Countdown/Timer.start()
+	$Whoosh.play()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+
+func _on_submit_button_up() -> void:
+	pass # Replace with function body.
