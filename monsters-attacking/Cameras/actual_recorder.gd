@@ -125,8 +125,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_redo_button_up() -> void:
-	var videos = DirAccess
-	videos.remove_absolute(full_video_path)
+	var videos = DirAccess.open('res://Videos')
+	videos.remove(str(current_video,'.ogv'))
 	countdown = 3
 	$CenterContainer/Buttons.hide()
 	$WebcamTexture.show()
