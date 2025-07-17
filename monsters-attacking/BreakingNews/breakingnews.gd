@@ -14,7 +14,7 @@ func begin_newscast():
 
 
 func _input(event: InputEvent) -> void:
-	if event and idling:
+	if event is InputEventMouse and idling:
 		$Intro/AnimationPlayer.play("intro")
 		idling = false
 

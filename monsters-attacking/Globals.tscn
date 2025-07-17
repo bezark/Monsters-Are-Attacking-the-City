@@ -1,8 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://21haevrrjgww"]
 
 [ext_resource type="Script" uid="uid://xgentxaaasti" path="res://Globals.gd" id="1_acxym"]
-[ext_resource type="Resource" uid="uid://37ou2rmcwg1p" path="res://Videos/newscast.tres" id="2_7ukqg"]
+[ext_resource type="Resource" uid="uid://bc53t67jaq1p3" path="res://Videos/newscast.tres" id="2_7ukqg"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_acxym")
 newscast = ExtResource("2_7ukqg")
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Clips wiped"
