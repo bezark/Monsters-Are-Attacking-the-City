@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://clgyfky38v65i"]
 
-[ext_resource type="VideoStream" uid="uid://ciy6m7655ea00" path="res://Assets/commercials-cut.ogv" id="1_pn3n7"]
+[ext_resource type="VideoStream" uid="uid://dvotoo50iq4lv" path="res://Assets/commercials.ogv" id="1_pn3n7"]
 [ext_resource type="Script" uid="uid://dk0no6edjoks2" path="res://commercials.gd" id="2_jjf8t"]
 
 [node name="Commercials" type="VideoStreamPlayer"]

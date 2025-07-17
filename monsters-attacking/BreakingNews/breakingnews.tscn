@@ -562,7 +562,7 @@ size = Vector3(0.202148, 0.796021, 0.246094)
 script = ExtResource("2_8tfbw")
 
 [node name="Begin" type="MeshInstance3D" parent="Intro/Skyline"]
-transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 0.118562, -0.210977, 0.00845003)
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, 0.0831262, -0.209205, 0.00845003)
 visible = false
 mesh = SubResource("TextMesh_nq4w2")
 skeleton = NodePath("../../..")
