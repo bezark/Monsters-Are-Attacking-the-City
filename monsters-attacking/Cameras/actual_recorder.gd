@@ -9,8 +9,6 @@ var recording = false
 var state = 'preview'
 @onready var video: VideoStreamPlayer = %Video
 
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 
@@ -22,6 +20,7 @@ func _input(event: InputEvent) -> void:
 				$Countdown.show()
 				$Countdown/Timer.start()
 				$Whoosh.play()
+				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			'recording':
 				stop_recording()
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
