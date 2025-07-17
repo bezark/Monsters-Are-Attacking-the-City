@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=26 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
 [ext_resource type="Script" uid="uid://i4i67x1di7yt" path="res://BreakingNews/floating_building.gd" id="2_8tfbw"]
 [ext_resource type="AudioStream" uid="uid://cwp4tk2hmaqmh" path="res://Assets/nightly-news-intro-330331.mp3" id="4_qcb1u"]
 [ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="5_nrvyl"]
+[ext_resource type="AudioStream" uid="uid://c8esuvpqhk7ha" path="res://Assets/news-background-music-144801.mp3" id="6_l5art"]
 [ext_resource type="PackedScene" uid="uid://clgyfky38v65i" path="res://commercials.tscn" id="6_q84x5"]
 [ext_resource type="PackedScene" uid="uid://ca35ig0ds8ax7" path="res://Prompt.tscn" id="7_ikqud"]
 [ext_resource type="PackedScene" uid="uid://ba5bwhyqn46gd" path="res://Chiron.tscn" id="7_nq4w2"]
@@ -264,6 +265,18 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["MONSTERS ARE ATTACKING THE CITYTHOUSANDS WILL DIE"]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../HeadlineMusic:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hglix"]
@@ -562,7 +575,7 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["MONSTERS ARE ATTACKING THE CITYTHOUSANDS WILL DIE"]
+"values": ["MONSTERS ARE ATTACKING THE CITY \\n THOUSANDS WILL DIE"]
 }
 
 [sub_resource type="Animation" id="Animation_nq4w2"]
@@ -607,34 +620,22 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Newsic:playing")
+tracks/3/path = NodePath("../Swoosh:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.133333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Swoosh:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(4.86667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(6.06667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -642,41 +643,53 @@ tracks/5/keys = {
 "method": &"play_news"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Skyline/Begin:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Skyline/Begin:visible")
+tracks/6/path = NodePath("../Headline:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Headline:visible")
+tracks/7/path = NodePath("../Headline:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../Headline:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 1.83333, 5.1, 5.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.3303, 0, -1.01317), Vector3(-0.330299, 0, -1.01317), Vector3(-0.330299, 0, -1.01317), Vector3(-1.3303, 0, -1.01317)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../HeadlineMusic:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 8.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50e7i"]
@@ -791,6 +804,9 @@ bus = &"Crunch"
 [node name="Swoosh" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("5_nrvyl")
 bus = &"Crunch"
+
+[node name="HeadlineMusic" type="AudioStreamPlayer" parent="Intro"]
+stream = ExtResource("6_l5art")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intro"]
 root_node = NodePath("../OmniLight3D2")
