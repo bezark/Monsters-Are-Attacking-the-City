@@ -54,53 +54,62 @@ func start_recording():
 		]
 	else:
 		args = [
-			"-v", "verbose",
-			
-			# Audio input FIRST (helps with sync)
-			"-f", "alsa",
-			"-thread_queue_size", "2048",  # Increase buffer
-			"-ar", "44100",  # Set sample rate explicitly
-			"-ac", "1",  # Mono
-			"-i", "hw:CARD=PureAudio,DEV=0",
-			
-			# Video input SECOND
-			"-f", "x11grab", 
-			"-r", "30",
-			"-video_size", "720x480",  # Use -video_size instead of -s
-			"-i", ":0.0",
-			
-			## Sync and timing options
-			#"-use_wallclock_as_timestamps", "1",  # Better timestamp handling
-			#"-async", "1",  # Audio sync
-			#"-vsync", "1",  # Video sync
-			#
-			# Encoding options
-			"-c:v", "libtheora", 
-			"-q:v", "10",
-			"-c:a", "libvorbis",
-			"-q:a", "5",  # Audio quality
-			
-			# Output
-			str(full_video_path, ".ogv")
-		]
+		"-v", "verbose",
+		
+		# Important: Set format flags BEFORE inputs
+		"-f", "alsa",
+		"-thread_queue_size", "1024",
+		"-ar", "44100",
+		"-ac", "1",
+		"-i", "hw:CARD=PureAudio,DEV=0",
+		
+		"-f", "x11grab",
+		"-framerate", "30",  # Use -framerate instead of -r for input
+		"-video_size", "720x480",
+		"-thread_queue_size", "1024",  # Also for video
+		"-i", ":0.0",
+		
+		# Critical sync and real-time options
+		"-use_wallclock_as_timestamps", "1",
+		"-async", "1",
+		"-vsync", "cfr",  # Constant frame rate
+		"-copyts",  # Copy timestamps
+		"-start_at_zero",  # Start timestamps at zero
+		
+		# Encoding options with constraints
+		"-c:v", "libtheora",
+		"-b:v", "2000k",  # Set video bitrate
+		"-q:v", "7",  # Lower quality value = higher quality
+		"-c:a", "libvorbis", 
+		"-b:a", "128k",  # Set audio bitrate
+		"-ar", "44100",  # Ensure output sample rate
+		
+		# Output options
+		"-shortest",  # Stop when shortest stream ends
+		"-avoid_negative_ts", "make_zero",
+		full_video_path + ".ogv"
+	]
 	
 	ffmpeg_pid = OS.create_process("ffmpeg", args)
+	recording = true
 	print("Started recording with PID: ", ffmpeg_pid)
 
 func stop_recording():
-	if ffmpeg_pid != -1:
-		# Send 'q' to ffmpeg stdin instead of kill -INT
-		# This allows ffmpeg to properly flush buffers
-		OS.execute("echo", ["q"], [], true, true)
-
-		# Give more time for buffer flushing
-		await get_tree().create_timer(2.0).timeout
-
-		# If still running, then use kill
+	if ffmpeg_pid != -1 and recording:
+		recording = false
+		
+		# Method 1: Send SIGTERM for graceful shutdown
+		OS.execute("kill", ["-TERM", str(ffmpeg_pid)])
+		
+		# Wait for ffmpeg to finish properly
+		await get_tree().create_timer(1.0).timeout
+		
+		# If still running, force kill
 		if OS.is_process_running(ffmpeg_pid):
-			OS.execute("kill", ["-INT", str(ffmpeg_pid)])
-			await get_tree().create_timer(1.0).timeout
-
+			OS.execute("kill", ["-KILL", str(ffmpeg_pid)])
+			await get_tree().create_timer(0.5).timeout
+		
+		ffmpeg_pid = -1
 		print("Recording stopped")
 		play_video()
 #func stop_recording():
