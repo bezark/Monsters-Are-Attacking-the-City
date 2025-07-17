@@ -122,6 +122,7 @@ func stop_recording():
 		# Add small delay before playing to ensure file is fully written
 		await get_tree().create_timer(0.5).timeout
 		play_video()
+		
 #func stop_recording():
 	#if ffmpeg_pid != -1:
 		#OS.execute("kill", ["-INT", str(ffmpeg_pid)])
