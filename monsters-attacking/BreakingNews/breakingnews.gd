@@ -39,7 +39,7 @@ func play_news():
 				$Commercials.play_ads()
 				$News.hide()
 			'clip':
-				$News.stream = clip.vid
+				$News.stream.file = clip.vid
 				$News.play()
 				$News.show()
 				$Commercials.hide()
