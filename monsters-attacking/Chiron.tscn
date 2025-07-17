@@ -69,10 +69,11 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mbogq")
 
 [node name="Label" type="Label" parent="VBoxContainer/Footer/Body"]
+custom_minimum_size = Vector2(550, 12)
 layout_mode = 2
-text = "MONSTERS ARE ATTACKING THE CITY
-THOUSANDS WILL DIE"
+text = "MONSTERS ARE ATTACKING THE CITY	THOUSANDS WILL DIE"
 label_settings = SubResource("LabelSettings_j6lth")
+autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Footer"]
 layout_mode = 2
