@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvrmaipw23iue"]
+[gd_scene load_steps=10 format=3 uid="uid://cvrmaipw23iue"]
 
 [ext_resource type="Script" uid="uid://b52tqxseiqsqp" path="res://Cameras/actual_recorder.gd" id="1_g0ptl"]
 [ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://Cameras/webcam.tres" id="2_0rih5"]
 [ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="2_ivji2"]
 [ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://Cameras/webcam_control.gd" id="3_ivji2"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="4_0rih5"]
+
+[sub_resource type="Gradient" id="Gradient_ivji2"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3biur"]
+gradient = SubResource("Gradient_ivji2")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rih5"]
 bg_color = Color(0.00784314, 0.00784314, 0.00784314, 0.854902)
@@ -26,6 +35,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g0ptl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3biur")
 
 [node name="Whoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ivji2")
@@ -58,7 +76,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0rih5")
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Click to begin recording. Feel free to use any of the objects provided to continue telling the story. Click again to stop recording or recording will stop automatically after 30 seconds."
+text = "Click to begin recording. 
+Feel free to move the camera or use any of the objects provided to continue telling the story.
+
+Click again to stop.
+Recording will stop automatically after 30 seconds."
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -101,12 +123,12 @@ layout_mode = 2
 [node name="Redo" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 size_flags_vertical = 8
-text = "Redo..."
+text = "REDO"
 
 [node name="Submit" type="Button" parent="CenterContainer/Buttons"]
 layout_mode = 2
 size_flags_vertical = 8
-text = "Submit
+text = "SUBMIT
 "
 
 [node name="Timer" type="Timer" parent="CenterContainer/Buttons"]

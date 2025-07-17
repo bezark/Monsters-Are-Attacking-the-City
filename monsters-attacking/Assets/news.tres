@@ -12,6 +12,10 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsys5"]
 texture = SubResource("GradientTexture2D_0y07j")
+texture_margin_left = 14.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 7.0
 
 [sub_resource type="Gradient" id="Gradient_cy8i0"]
 offsets = PackedFloat32Array(0, 0.526012, 1)
@@ -24,6 +28,10 @@ fill_to = Vector2(0, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_242rm"]
 texture = SubResource("GradientTexture2D_ddyss")
+texture_margin_left = 14.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 7.0
 
 [resource]
 Button/colors/font_color = Color(1, 0.394475, 0.326094, 1)
