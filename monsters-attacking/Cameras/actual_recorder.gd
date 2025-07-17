@@ -4,13 +4,26 @@ var base_path: String = "res://Videos/"
 var current_video : String
 var full_video_path: String 
 
-
+var countdown = 3
+var recording = false
+var state = 'preview'
 @onready var video: VideoStreamPlayer = %Video
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		$Instructions.hide()
+		match state:
+			'preview':
+				$Instructions.hide()
+				$Countdown.show()
+				$Countdown/Timer.start()
+			'recording':
+				stop_recording()
+
+
+			
+
 func start_recording():
+	state = "recording"
 	var output_path = ProjectSettings.globalize_path(base_path)
 	current_video = Time.get_datetime_string_from_system()
 	full_video_path = str(output_path,current_video)
@@ -78,8 +91,9 @@ func _on_record_toggled(toggled_on: bool) -> void:
 		
 		
 func play_video():
+	state = "playback"
 	print("trying to play video...")
-	$CenterContainer/VBoxContainer/WebcamTexture.hide()
+	$WebcamTexture.hide()
 	video.stream = VideoStreamTheora.new()
 	video.stream.file=str(full_video_path,".ogv")
 	video.show()
@@ -87,6 +101,15 @@ func play_video():
 
 
 func _on_video_finished() -> void:
-	video.hide()
-	$CenterContainer/VBoxContainer/WebcamTexture.show()
+	pass
+
+
+func _on_timer_timeout() -> void:
+	countdown -= 1
+	if countdown >=1:
+		$Countdown.text = str(countdown)
+	else:
+		$Countdown/Timer.stop()
+		$Countdown.hide()
+		start_recording()
 	

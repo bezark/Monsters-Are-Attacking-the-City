@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvrmaipw23iue"]
+[gd_scene load_steps=7 format=3 uid="uid://cvrmaipw23iue"]
 
 [ext_resource type="Script" uid="uid://b52tqxseiqsqp" path="res://Cameras/actual_recorder.gd" id="1_g0ptl"]
 [ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://Cameras/webcam.tres" id="2_0rih5"]
 [ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://Cameras/webcam_control.gd" id="3_ivji2"]
+[ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="4_0rih5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rih5"]
 bg_color = Color(0.00784314, 0.00784314, 0.00784314, 0.854902)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivji2"]
+font = ExtResource("4_0rih5")
+font_size = 128
+font_color = Color(1, 0.291615, 0.229135, 1)
+outline_size = 10
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.831373)
+shadow_offset = Vector2(4, -4)
 
 [node name="Recorder" type="Control"]
 layout_mode = 3
@@ -19,26 +29,45 @@ script = ExtResource("1_g0ptl")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Video" type="VideoStreamPlayer" parent="CenterContainer"]
+[node name="Video" type="VideoStreamPlayer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+offset_left = 360.0
+offset_top = 240.0
+offset_right = 360.0
+offset_bottom = 240.0
 
-[node name="WebcamTexture" type="TextureRect" parent="CenterContainer"]
-custom_minimum_size = Vector2(480, 320)
+[node name="HBoxContainer" type="HBoxContainer" parent="Video"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Redo" type="Button" parent="Video/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
+text = "Redo..."
+
+[node name="Submit" type="Button" parent="Video/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Submit
+"
+
+[node name="WebcamTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(720, 480)
+layout_mode = 2
+offset_right = 720.0
+offset_bottom = 480.0
 texture = ExtResource("2_0rih5")
 expand_mode = 3
 
-[node name="WebcamControl" type="Node" parent="CenterContainer/WebcamTexture"]
+[node name="WebcamControl" type="Node" parent="WebcamTexture"]
 script = ExtResource("3_ivji2")
 DEVICE_NAME = "Camera         "
 FORMAT_INDEX = 1
@@ -61,4 +90,24 @@ text = "Click to begin recording. Feel free to use any of the objects provided t
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[connection signal="finished" from="CenterContainer/Video" to="." method="_on_video_finished"]
+[node name="Countdown" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -67.5
+offset_right = 28.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_ivji2")
+
+[node name="Timer" type="Timer" parent="Countdown"]
+
+[connection signal="finished" from="Video" to="." method="_on_video_finished"]
+[connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://21haevrrjgww"]
 
 [ext_resource type="Script" uid="uid://xgentxaaasti" path="res://Globals.gd" id="1_acxym"]
-[ext_resource type="Resource" uid="uid://cu4d7sd3a0bl1" path="res://newscast.tres" id="2_7ukqg"]
+[ext_resource type="Resource" uid="uid://bw24afvdtc3pj" path="res://newscast.tres" id="2_7ukqg"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_acxym")

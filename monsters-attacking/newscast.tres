@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Newscast" load_steps=3 format=3 uid="uid://cu4d7sd3a0bl1"]
+[gd_resource type="Resource" script_class="Newscast" load_steps=3 format=3 uid="uid://bw24afvdtc3pj"]
 
 [ext_resource type="Script" uid="uid://cl3g8uuxnd5q0" path="res://Clip.gd" id="1_40754"]
 [ext_resource type="Script" uid="uid://co0mqjv1ac432" path="res://Newscast.gd" id="2_ekhdm"]
