@@ -25,7 +25,7 @@ var clips_played = 0
 func play_news():
 	$Intro.hide()
 	
-	print(clips_played)
+	
 	if clips_played >= Globals.newscast.clips.size():
 		print('showing prompt')
 		$Prompt.show()
@@ -37,6 +37,12 @@ func play_news():
 		match clip.type:
 			"commercial":
 				$Commercials.play_ads()
+				$News.hide()
+			'clip':
+				$News.stream = clip.vid
+				$News.play()
+				$News.show()
+				$Commercials.hide()
 
 
 func change():
@@ -49,3 +55,7 @@ func _on_commercials_commercial_finished() -> void:
 
 func _on_prompt_prompt_finished() -> void:
 	begin_newscast()
+
+
+func _on_news_finished() -> void:
+	play_news()

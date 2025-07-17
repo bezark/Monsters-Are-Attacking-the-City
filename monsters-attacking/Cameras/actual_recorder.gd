@@ -141,7 +141,7 @@ func _on_redo_button_up() -> void:
 func _on_submit_pressed() -> void:
 	print('submitting')
 	var new_clip:= Clip.new()
-	new_clip.vid = full_video_path
+	new_clip.vid = str(full_video_path, ".ogv")
 	Globals.newscast.clips.append(new_clip)
 	Globals.save()
 	get_tree().change_scene_to_file("res://BreakingNews/breakingnews.tscn")

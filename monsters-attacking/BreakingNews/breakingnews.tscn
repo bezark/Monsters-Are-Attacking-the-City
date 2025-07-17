@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=20 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="5_nrvyl"]
 [ext_resource type="PackedScene" uid="uid://clgyfky38v65i" path="res://commercials.tscn" id="6_q84x5"]
 [ext_resource type="PackedScene" uid="uid://ca35ig0ds8ax7" path="res://Prompt.tscn" id="7_ikqud"]
+[ext_resource type="VideoStream" uid="uid://ciy6m7655ea00" path="res://Assets/commercials-cut.ogv" id="7_nq4w2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -421,6 +422,8 @@ _data = {
 &"intro": SubResource("Animation_nrvyl")
 }
 
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_ikqud"]
+
 [node name="BREAKINGNEWS" type="Node3D"]
 script = ExtResource("1_8tfbw")
 
@@ -518,10 +521,23 @@ libraries = {
 autoplay = "idle"
 
 [node name="Commercials" parent="." instance=ExtResource("6_q84x5")]
+stream = ExtResource("7_nq4w2")
 loop = true
+
+[node name="News" type="VideoStreamPlayer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stream = SubResource("VideoStreamTheora_ikqud")
 
 [node name="Prompt" parent="." instance=ExtResource("7_ikqud")]
 visible = false
 
 [connection signal="commercial_finished" from="Commercials" to="." method="_on_commercials_commercial_finished"]
+[connection signal="finished" from="News" to="." method="_on_news_finished"]
 [connection signal="prompt_finished" from="Prompt" to="." method="_on_prompt_prompt_finished"]
