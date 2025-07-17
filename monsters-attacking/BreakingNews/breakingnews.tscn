@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgugoidm0ni64"]
+[gd_scene load_steps=19 format=3 uid="uid://bgugoidm0ni64"]
 
 [ext_resource type="Script" uid="uid://dgob2qsjfs1ln" path="res://BreakingNews/breakingnews.gd" id="1_8tfbw"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="1_lqct8"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="5_nrvyl"]
 [ext_resource type="PackedScene" uid="uid://clgyfky38v65i" path="res://commercials.tscn" id="6_q84x5"]
 [ext_resource type="PackedScene" uid="uid://ca35ig0ds8ax7" path="res://Prompt.tscn" id="7_ikqud"]
-[ext_resource type="VideoStream" uid="uid://ciy6m7655ea00" path="res://Assets/commercials-cut.ogv" id="7_nq4w2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bn4g4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -521,7 +520,6 @@ libraries = {
 autoplay = "idle"
 
 [node name="Commercials" parent="." instance=ExtResource("6_q84x5")]
-stream = ExtResource("7_nq4w2")
 loop = true
 
 [node name="News" type="VideoStreamPlayer" parent="."]
