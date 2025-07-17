@@ -138,4 +138,8 @@ func _on_redo_button_up() -> void:
 
 
 func _on_submit_button_up() -> void:
-	pass # Replace with function body.
+	var new_clip:= Clip.new()
+	new_clip.vid = full_video_path
+	Globals.newscast.clips.append(new_clip)
+	Globals.save()
+	get_tree().change_scene_to_file("res://BreakingNews/breakingnews.tscn")
