@@ -112,4 +112,4 @@ text = "Submit
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="CenterContainer/Video" to="." method="_on_video_finished"]
 [connection signal="button_up" from="CenterContainer/Buttons/Redo" to="." method="_on_redo_button_up"]
-[connection signal="button_up" from="CenterContainer/Buttons/Submit" to="." method="_on_submit_button_up"]
+[connection signal="pressed" from="CenterContainer/Buttons/Submit" to="." method="_on_submit_pressed"]

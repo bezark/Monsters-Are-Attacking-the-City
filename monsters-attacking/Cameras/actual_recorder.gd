@@ -137,7 +137,9 @@ func _on_redo_button_up() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
-func _on_submit_button_up() -> void:
+
+func _on_submit_pressed() -> void:
+	print('submitting')
 	var new_clip:= Clip.new()
 	new_clip.vid = full_video_path
 	Globals.newscast.clips.append(new_clip)
