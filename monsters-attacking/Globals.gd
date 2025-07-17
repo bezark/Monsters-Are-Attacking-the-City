@@ -4,7 +4,7 @@ extends Node
 
 
 func _ready() -> void:
-	newscast = ResourceLoader.load("res://newscast.tres")
+	newscast = ResourceLoader.load("res://Videos/newscast.tres")
 
 
 func _process(delta: float) -> void:
@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 
 
 func save():
-	ResourceSaver.save(newscast, "res://newscast.tres")
+	ResourceSaver.save(newscast, "res://Videos/newscast.tres")
