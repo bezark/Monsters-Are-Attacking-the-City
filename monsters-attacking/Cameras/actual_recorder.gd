@@ -59,6 +59,7 @@ func start_recording():
 		# Important: Set format flags BEFORE inputs
 		"-f", "alsa",
 		"-thread_queue_size", "1024",
+		"-buffer_size", "192000",
 		"-ar", "44100",
 		"-ac", "1",
 		"-i", "hw:CARD=PureAudio,DEV=0",
@@ -98,19 +99,28 @@ func stop_recording():
 	if ffmpeg_pid != -1 and recording:
 		recording = false
 		
-		# Method 1: Send SIGTERM for graceful shutdown
-		OS.execute("kill", ["-TERM", str(ffmpeg_pid)])
+		# Method 1: Use SIGINT (Ctrl+C) - allows FFmpeg to finalize properly
+		OS.execute("kill", ["-INT", str(ffmpeg_pid)])
 		
-		# Wait for ffmpeg to finish properly
-		await get_tree().create_timer(1.0).timeout
+		# Give FFmpeg more time to flush buffers and finalize the file
+		var wait_time = 0.0
+		var max_wait = 5.0
 		
-		# If still running, force kill
+		while OS.is_process_running(ffmpeg_pid) and wait_time < max_wait:
+			await get_tree().create_timer(0.1).timeout
+			wait_time += 0.1
+		
+		# If still running after grace period, force kill
 		if OS.is_process_running(ffmpeg_pid):
+			print("FFmpeg didn't stop gracefully, force killing...")
 			OS.execute("kill", ["-KILL", str(ffmpeg_pid)])
 			await get_tree().create_timer(0.5).timeout
 		
 		ffmpeg_pid = -1
-		print("Recording stopped")
+		print("Recording stopped after ", wait_time, " seconds")
+		
+		# Add small delay before playing to ensure file is fully written
+		await get_tree().create_timer(0.5).timeout
 		play_video()
 #func stop_recording():
 	#if ffmpeg_pid != -1:
