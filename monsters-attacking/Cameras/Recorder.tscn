@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvrmaipw23iue"]
+[gd_scene load_steps=8 format=3 uid="uid://cvrmaipw23iue"]
 
 [ext_resource type="Script" uid="uid://b52tqxseiqsqp" path="res://Cameras/actual_recorder.gd" id="1_g0ptl"]
 [ext_resource type="Texture2D" uid="uid://dwt71vvbsdry2" path="res://Cameras/webcam.tres" id="2_0rih5"]
+[ext_resource type="AudioStream" uid="uid://cjsfw237wyjls" path="res://Assets/swish-swoosh-woosh-sfx-47-357152.mp3" id="2_ivji2"]
 [ext_resource type="Script" uid="uid://dhcswwm6hsxym" path="res://Cameras/webcam_control.gd" id="3_ivji2"]
 [ext_resource type="FontFile" uid="uid://dul6l3qov1dtb" path="res://Assets/FrontPageNews11-ADw6.ttf" id="4_0rih5"]
 
@@ -26,19 +27,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g0ptl")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-autoplay = true
+[node name="Whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ivji2")
+bus = &"Crunch"
 
-[node name="Video" type="VideoStreamPlayer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 240.0
+offset_right = 400.0
+offset_bottom = 280.0
+
+[node name="Video" type="VideoStreamPlayer" parent="CenterContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-offset_left = 360.0
-offset_top = 240.0
-offset_right = 360.0
-offset_bottom = 240.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Video"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Video"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -48,12 +53,12 @@ offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Redo" type="Button" parent="Video/HBoxContainer"]
+[node name="Redo" type="Button" parent="CenterContainer/Video/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Redo..."
 
-[node name="Submit" type="Button" parent="Video/HBoxContainer"]
+[node name="Submit" type="Button" parent="CenterContainer/Video/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Submit
@@ -109,5 +114,5 @@ label_settings = SubResource("LabelSettings_ivji2")
 
 [node name="Timer" type="Timer" parent="Countdown"]
 
-[connection signal="finished" from="Video" to="." method="_on_video_finished"]
+[connection signal="finished" from="CenterContainer/Video" to="." method="_on_video_finished"]
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
