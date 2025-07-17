@@ -41,7 +41,7 @@ offset_bottom = 164.0
 text = "More News"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 
 [connection signal="button_down" from="Initial/Commercial" to="." method="_on_commercial_button_down"]
 [connection signal="button_up" from="Initial/More News" to="." method="_on_more_news_button_up"]
