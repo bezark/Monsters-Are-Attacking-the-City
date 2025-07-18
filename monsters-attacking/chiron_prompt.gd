@@ -29,8 +29,8 @@ func _on_option_1_button_up() -> void:
 func _on_option_2_button_up() -> void:
 	var new_chiron := Clip.new()
 	new_chiron.type = "chiron"
-	new_chiron.text = option1
-	Globals.newscast.prompts.push_front(option2)
+	new_chiron.text = option2
+	Globals.newscast.prompts.push_front(option1)
 	Globals.newscast.clips.append(new_chiron)
 	Globals.save()
 	get_tree().change_scene_to_file("res://Cameras/Recorder.tscn")
