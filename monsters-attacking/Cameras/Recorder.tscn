@@ -16,7 +16,7 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rih5"]
-bg_color = Color(0.00784314, 0.00784314, 0.00784314, 0.854902)
+bg_color = Color(0.00784314, 0.00784314, 0.00784314, 0.498039)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ivji2"]
 font = ExtResource("4_0rih5")
