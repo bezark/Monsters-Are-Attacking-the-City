@@ -705,8 +705,8 @@ _data = {
 
 [node name="BREAKINGNEWS" type="Node3D"]
 script = ExtResource("1_8tfbw")
-min_chiron = 2
-max_chiron = 2
+min_chiron = 4
+max_chiron = 8
 
 [node name="Intro" type="Node3D" parent="."]
 
